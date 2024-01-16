@@ -1,0 +1,28 @@
+<a href="{{ link }}" class="opacity-85 hover:opacity-100">
+  <div class="content relative h-full w-full overflow-hidden">
+    <h1
+      [ngClass]="{
+        'left-8': isLarge,
+        'left-1/2 -translate-x-1/2': !isLarge
+      }"
+      class="absolute bottom-8 text-2xl"
+    >
+      {{ header }}
+    </h1>
+    <img
+      [ngClass]="{
+        'w-4/5 absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2':
+          isLarge,
+        'h-4/5': !isLarge
+      }"
+      src="{{ src }}"
+      alt=""
+      class="object-cover block m-auto"
+    />
+    <img
+      src="../../../assets/images/recommended-bg.svg"
+      alt=""
+      class="absolute h-full w-full left-0 top-0 object-cover -z-10"
+    />
+  </div>
+</a>

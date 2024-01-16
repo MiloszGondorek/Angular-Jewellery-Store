@@ -1,0 +1,18 @@
+@import "../../../styles.scss";
+
+h1 {
+  font-family: "Cinzel";
+}
+
+.content:hover {
+  width: calc(100% + 20px);
+  height: calc(100% + 20px);
+  transform: translate(-10px, -10px);
+}
+$time: 0.4s;
+.content {
+  transition: width $time, height $time, transform $time;
+}
+a {
+  transition: opacity $time;
+}

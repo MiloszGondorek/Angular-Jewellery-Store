@@ -1,0 +1,21 @@
+@import "../../styles.scss";
+
+.main {
+  .top {
+    img {
+      max-height: 60vh;
+    }
+  }
+  .left {
+    background-color: $secondary;
+    * {
+      color: #e1e1e1;
+    }
+  }
+}
+
+.presents {
+  background-color: #4b5c66;
+  .left {
+  }
+}
