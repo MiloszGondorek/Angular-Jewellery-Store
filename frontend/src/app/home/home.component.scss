@@ -16,6 +16,12 @@
 
 .presents {
   background-color: #4b5c66;
-  .left {
+  height: fit-content;
+  .links {
+    max-width: 1100px;
   }
+}
+
+.cinzel {
+  font-family: "Cinzel";
 }

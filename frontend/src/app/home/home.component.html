@@ -16,7 +16,7 @@
         <button-border
           link="home"
           text="Discover >"
-          class="ml-auto block w-fit"
+          class="ml-auto block w-fit mt-16"
         />
       </div>
     </div>
@@ -75,16 +75,47 @@
   </div>
 </div>
 
-<div class="presents">
-  <div class="content w-11/12 max-w-screen-3xl m-auto">
-    <div class="left w-1/3">
-      <h1>Wybierz prezent dla bliskich</h1>
-      <p>
+<div class="presents py-8">
+  <div class="content w-11/12 max-w-screen-3xl m-auto grid grid-cols-3 gap-x-5">
+    <div class="left text-white flex flex-col m-auto gap-y-10 col-span-1">
+      <h1 class="text-5xl cinzel">
+        Wybierz <br />prezent dla <br />
+        bliskich
+      </h1>
+      <p class="text-xl font-light">
         Znajdź idealne rozwiązanie dla każdej okazji. Odkryj propozycje, które z
         pewnością zachwycą obdarowywaną osobę.
       </p>
       <button-border link="home" text="Zobacz więcej >" />
     </div>
-    <div class="links"></div>
+
+    <div class="links grid grid-cols-3 gap-x-5 col-span-2 m-auto">
+      <div class="flex flex-col gap-y-5 h-fit">
+        <present-link header="123" src="../../assets/images/present 1.png" />
+        <present-link
+          header="123"
+          src="../../assets/images/present 2.png"
+          [isLarge]="false"
+        />
+      </div>
+
+      <div class="flex flex-col gap-y-5 h-fit">
+        <present-link
+          header="123"
+          src="../../assets/images/present 3.png"
+          [isLarge]="false"
+        />
+        <present-link header="123" src="../../assets/images/present 4.png" />
+      </div>
+
+      <div class="flex flex-col gap-y-5 h-fit">
+        <present-link header="123" src="../../assets/images/present 5.png" />
+        <present-link
+          header="123"
+          src="../../assets/images/present 6.png"
+          [isLarge]="false"
+        />
+      </div>
+    </div>
   </div>
 </div>
