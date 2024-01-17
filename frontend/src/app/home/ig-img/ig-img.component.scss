@@ -1,0 +1,20 @@
+.ig-img {
+  img {
+    width: calc(100%);
+    height: calc(100%);
+    opacity: 90%;
+    $time: 0.5s;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    max-width: none;
+    transition: width $time, height $time, opacity $time;
+  }
+  img:hover {
+    width: calc(100% + 20px);
+    height: calc(100% + 20px);
+    opacity: 100%;
+    cursor: pointer;
+    z-index: 20;
+  }
+}

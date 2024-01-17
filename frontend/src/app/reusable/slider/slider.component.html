@@ -1,0 +1,24 @@
+<h1 class="m-auto w-fit cinzel text-3xl mb-8">{{ header }}</h1>
+<div class="content relative m-auto w-11/12 max-w-screen-3xl" #myElement>
+  <img
+    class="l_arrow"
+    src="../../../assets/images/arrow-left.svg"
+    class="arrow absolute left-0"
+    [ngStyle]="{ 'top.px': topPx }"
+  />
+  <div class="flex justify-center gap-x-5" #containerElement>
+    <item
+      *ngFor="let item of items"
+      src="../../assets/images/items/item 1.png"
+      name="Nazwa"
+      [price]="item.getName()"
+      #child
+    />
+  </div>
+  <img
+    class="r_arrow"
+    src="../../../assets/images/arrow-right.svg"
+    class="arrow absolute right-0"
+    [ngStyle]="{ 'top.px': topPx }"
+  />
+</div>

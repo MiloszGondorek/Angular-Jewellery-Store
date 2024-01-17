@@ -1,120 +1,149 @@
-<div class="main w-full h-fit">
-  <div class="top relative w-full">
-    <img
-      src="../../assets/images/Main.png"
-      class="w-full h-full object-cover"
-    />
+<div class="flex flex-col gap-y-24">
+  <div class="main w-full h-fit">
+    <div class="top relative w-full">
+      <img
+        src="../../assets/images/Main.png"
+        class="w-full h-full object-cover"
+      />
+      <div
+        class="left absolute left-0 top-0 w-1/2 h-full opacity-80 flex flex-col justify-center"
+      >
+        <div class="content w-2/3 max-w-lg m-auto">
+          <h2 class="text-4xl">
+            Welcome to the World of Elegance Vivid jewelry
+          </h2>
+          <p class="text-justify mt-4">
+            At Vivida Jewelry, we create unique works of art that exude beauty,
+            classicity and individual style.
+          </p>
+          <button-border
+            link="home"
+            text="Discover >"
+            class="ml-auto block w-fit mt-16"
+          />
+        </div>
+      </div>
+    </div>
+    <div class="pros flex justify-between m-auto w-full lg:w-5/6 gap-x-4 py-14">
+      <pros
+        link="../../assets/images/guarantee.svg"
+        header="Gwarancja Jakości i Piękna"
+        desc="Każdy nasz produkt to gwarancja nie tylko doskonałej jakości, ale także niepowtarzalnego piękna."
+      />
+      <pros
+        link="../../assets/images/diamond.svg"
+        header="Ekskluzywna Kolekcja Biżuterii"
+        desc="Nasz sklep to raj dla miłośników biżuterii, oferujący szeroką i ekskluzywną kolekcję ozdób"
+      />
+      <pros
+        link="../../assets/images/monitor.svg"
+        header="Wygodne Zakupy Online"
+        desc="Zapraszamy do wygodnych zakupów online, gdzie w kilka kliknięć możesz znaleźć wymarzoną biżuterię."
+      />
+    </div>
+  </div>
+
+  <div class="flex flex-col justify-center">
     <div
-      class="left absolute left-0 top-0 w-1/2 h-full opacity-80 flex flex-col justify-center"
+      class="recomended flex flex-col gap-y-8 m-auto h-4/5 w-11/12 max-w-screen-3xl"
     >
-      <div class="content w-2/3 max-w-lg m-auto">
-        <h2 class="text-4xl">Welcome to the World of Elegance Vivid jewelry</h2>
-        <p class="text-justify mt-4">
-          At Vivida Jewelry, we create unique works of art that exude beauty,
-          classicity and individual style.
+      <div class="top flex gap-x-8 justify-center h-1/2">
+        <recommended
+          [isLarge]="true"
+          src="../../assets/images/recommended 1.svg"
+          header="Kolczyki"
+          class="w-2/3"
+        />
+        <recommended
+          [isLarge]="false"
+          src="../../assets/images/recommended 2.svg"
+          header="Pierścionki"
+          class="w-1/3"
+        />
+      </div>
+      <div class="bottom flex gap-x-8 justify-center h-1/2">
+        <recommended
+          [isLarge]="false"
+          src="../../assets/images/recommended 3.svg"
+          header="Naszyjniki"
+          class="w-1/3"
+        />
+        <recommended
+          [isLarge]="true"
+          src="../../assets/images/recommended 4.svg"
+          header="Branzoletki"
+          class="w-2/3"
+        />
+      </div>
+    </div>
+  </div>
+
+  <div class="presents py-8">
+    <div
+      class="content w-11/12 max-w-screen-3xl m-auto grid grid-cols-3 gap-x-5"
+    >
+      <div class="left text-white flex flex-col m-auto gap-y-10 col-span-1">
+        <h1 class="text-5xl cinzel">
+          Wybierz <br />prezent dla <br />
+          bliskich
+        </h1>
+        <p class="text-xl font-light">
+          Znajdź idealne rozwiązanie dla każdej okazji. Odkryj propozycje, które
+          z pewnością zachwycą obdarowywaną osobę.
         </p>
-        <button-border
-          link="home"
-          text="Discover >"
-          class="ml-auto block w-fit mt-16"
-        />
+        <button-border link="home" text="Zobacz więcej >" />
+      </div>
+
+      <div class="links grid grid-cols-3 gap-x-5 col-span-2 m-auto">
+        <div class="flex flex-col gap-y-5 h-fit">
+          <present-link header="123" src="../../assets/images/present 1.png" />
+          <present-link
+            header="123"
+            src="../../assets/images/present 2.png"
+            [isLarge]="false"
+          />
+        </div>
+
+        <div class="flex flex-col gap-y-5 h-fit">
+          <present-link
+            header="123"
+            src="../../assets/images/present 3.png"
+            [isLarge]="false"
+          />
+          <present-link header="123" src="../../assets/images/present 4.png" />
+        </div>
+
+        <div class="flex flex-col gap-y-5 h-fit">
+          <present-link header="123" src="../../assets/images/present 5.png" />
+          <present-link
+            header="123"
+            src="../../assets/images/present 6.png"
+            [isLarge]="false"
+          />
+        </div>
       </div>
     </div>
   </div>
-  <div class="pros flex justify-between m-auto w-full lg:w-5/6 gap-x-4 py-14">
-    <pros
-      link="../../assets/images/guarantee.svg"
-      header="Gwarancja Jakości i Piękna"
-      desc="Każdy nasz produkt to gwarancja nie tylko doskonałej jakości, ale także niepowtarzalnego piękna."
-    />
-    <pros
-      link="../../assets/images/diamond.svg"
-      header="Ekskluzywna Kolekcja Biżuterii"
-      desc="Nasz sklep to raj dla miłośników biżuterii, oferujący szeroką i ekskluzywną kolekcję ozdób"
-    />
-    <pros
-      link="../../assets/images/monitor.svg"
-      header="Wygodne Zakupy Online"
-      desc="Zapraszamy do wygodnych zakupów online, gdzie w kilka kliknięć możesz znaleźć wymarzoną biżuterię."
-    />
+
+  <div class="slider">
+    <slider header="BESTSELLERS" />
   </div>
-</div>
 
-<div class="h-screen flex flex-col justify-center">
-  <div
-    class="recomended flex flex-col gap-y-8 m-auto h-4/5 w-11/12 max-w-screen-3xl"
-  >
-    <div class="top flex gap-x-8 justify-center h-1/2">
-      <recommended
-        [isLarge]="true"
-        src="../../assets/images/recommended 1.svg"
-        header="Kolczyki"
-        class="w-2/3"
-      />
-      <recommended
-        [isLarge]="false"
-        src="../../assets/images/recommended 2.svg"
-        header="Pierścionki"
-        class="w-1/3"
-      />
-    </div>
-    <div class="bottom flex gap-x-8 justify-center h-1/2">
-      <recommended
-        [isLarge]="false"
-        src="../../assets/images/recommended 3.svg"
-        header="Naszyjniki"
-        class="w-1/3"
-      />
-      <recommended
-        [isLarge]="true"
-        src="../../assets/images/recommended 4.svg"
-        header="Branzoletki"
-        class="w-2/3"
-      />
-    </div>
-  </div>
-</div>
-
-<div class="presents py-8">
-  <div class="content w-11/12 max-w-screen-3xl m-auto grid grid-cols-3 gap-x-5">
-    <div class="left text-white flex flex-col m-auto gap-y-10 col-span-1">
-      <h1 class="text-5xl cinzel">
-        Wybierz <br />prezent dla <br />
-        bliskich
-      </h1>
-      <p class="text-xl font-light">
-        Znajdź idealne rozwiązanie dla każdej okazji. Odkryj propozycje, które z
-        pewnością zachwycą obdarowywaną osobę.
-      </p>
-      <button-border link="home" text="Zobacz więcej >" />
-    </div>
-
-    <div class="links grid grid-cols-3 gap-x-5 col-span-2 m-auto">
-      <div class="flex flex-col gap-y-5 h-fit">
-        <present-link header="123" src="../../assets/images/present 1.png" />
-        <present-link
-          header="123"
-          src="../../assets/images/present 2.png"
-          [isLarge]="false"
-        />
+  <div class="instagram m-auto w-11/12 max-w-screen-3xl mb-10">
+    <h1 class="text-2xl font-bold mb-4">
+      Instagram <span class="color font-medium"> &#64;Vivida</span>
+    </h1>
+    <div class="grid grid-cols-5 h-min w-full gap-x-2">
+      <div class="col-span-2 row-span-2">
+        <ig-img src="../../assets/images/ig/ig 1.png" />
       </div>
-
-      <div class="flex flex-col gap-y-5 h-fit">
-        <present-link
-          header="123"
-          src="../../assets/images/present 3.png"
-          [isLarge]="false"
-        />
-        <present-link header="123" src="../../assets/images/present 4.png" />
-      </div>
-
-      <div class="flex flex-col gap-y-5 h-fit">
-        <present-link header="123" src="../../assets/images/present 5.png" />
-        <present-link
-          header="123"
-          src="../../assets/images/present 6.png"
-          [isLarge]="false"
-        />
+      <div class="grid grid-rows-2 grid-cols-2 col-span-3 gap-2 xl:grid-cols-3">
+        <ig-img src="../../assets/images/ig/ig 2.png" class="aspect-square" />
+        <ig-img src="../../assets/images/ig/ig 3.png" />
+        <ig-img src="../../assets/images/ig/ig 4.png" />
+        <ig-img src="../../assets/images/ig/ig 5.png" />
+        <ig-img src="../../assets/images/ig/ig 5.png" />
+        <ig-img src="../../assets/images/ig/ig 5.png" />
       </div>
     </div>
   </div>
