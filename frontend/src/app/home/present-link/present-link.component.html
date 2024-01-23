@@ -1,11 +1,11 @@
-<div class="relative h-full">
+<div class="relative h-full cursor-pointer">
   <img
     src="{{ src }}"
     alt=""
     [ngClass]="{ 'aspect-square': !isLarge, large: isLarge }"
     class="h-full w-full object-cover"
   />
-  <div class="title p-3 py-1 absolute w-fit bottom-2 right-2">
+  <div class="title p-3 py-3 absolute w-fit bottom-2 right-2 select-none">
     <p class="px-3">{{ header }}</p>
     <div class="line"></div>
   </div>
