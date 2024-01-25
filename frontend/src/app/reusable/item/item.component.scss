@@ -1,0 +1,18 @@
+.container {
+  transition: transform 0.4s;
+  .image,
+  .item-image {
+    transition: 0.4s;
+  }
+}
+
+.container:hover {
+  transform: translateY(-10px);
+  .image {
+    box-shadow: 0px 0px 16.1px 5px rgba(171, 171, 171, 0.3);
+  }
+  .item-image {
+    width: 90%;
+    max-width: none;
+  }
+}

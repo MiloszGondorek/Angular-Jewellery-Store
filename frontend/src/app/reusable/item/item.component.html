@@ -1,14 +1,17 @@
-<div class="relative" #itemElement>
-  <img
-    src="../../../assets/images/recommended-bg.svg"
-    alt=""
-    class="w-full aspect-square"
-  />
-  <img
-    src="{{ src }}"
-    alt=""
-    class="absolute w-4/5 h-auto object-cover top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
-  />
+<div class="container cursor-pointer">
+  <div class="relative w-full image" #itemElement>
+    <img
+      src="../../../assets/images/recommended-bg.svg"
+      alt=""
+      class="w-full h-auto object-cover"
+    />
+    <img
+      src="{{ src }}"
+      alt=""
+      class="absolute w-4/5 h-auto object-cover top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 front item-image"
+      draggable="false"
+    />
+  </div>
+  <h1 class="text-2xl font-normal mt-2">{{ name }}</h1>
+  <p class="text-xl">{{ price }} <span class="text-lg font-light">PLN</span></p>
 </div>
-<h1 class="text-xl font-normal">{{ name }}</h1>
-<p class="text-xl">{{ price }} <span class="text-lg font-light">PLN</span></p>

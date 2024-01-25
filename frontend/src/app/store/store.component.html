@@ -1,7 +1,9 @@
 <div class="title">
-  <div class="w-4/5 max-w-screen-xl m-auto grid grid-cols-2 gap-y-10 h-64">
-    <div>
-      <h1>{{ header }}</h1>
+  <div
+    class="w-4/5 max-w-screen-xl m-auto grid grid-cols-2 gap-y-10 min-h-64 py-6"
+  >
+    <div class="my-auto">
+      <h1 class="text-5xl font-bold cinzel">{{ header }}</h1>
       <p>{{ description }}</p>
     </div>
     <div class="h-full relative">
@@ -11,5 +13,28 @@
         class="absolute w-full h-full object-contain"
       />
     </div>
+  </div>
+</div>
+
+<div class="w-4/5 mx-auto flex mt-8 gap-x-10">
+  <div class="filter w-1/6">
+    <filter header="Metal" [filter]="['Srebro', 'Złoto']" />
+    <filter
+      header="Kolekcja"
+      [filter]="[
+        'Eteryczna Harmonia',
+        'Majestatyczne Opale',
+        'Lustrzane Refleksje',
+        'Złoty Rytuał'
+      ]"
+    />
+  </div>
+  <div class="items grid grid-cols-5 w-5/6 ml-auto gap-5">
+    <item
+      *ngFor="let item of items"
+      name="item"
+      [price]="item.getName()"
+      src="../../assets/images/items/item 1.png"
+    ></item>
   </div>
 </div>
