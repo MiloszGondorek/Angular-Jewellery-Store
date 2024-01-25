@@ -1,10 +1,25 @@
 <div class="line mt-10"></div>
 <h1 class="w-fit text-2xl mt-5 mb-3">{{ header }}</h1>
-<div class="flex flex-col gap-y-2">
+<div class="flex flex-col gap-y-2.5 w-full">
   <div *ngFor="let element of filter">
-    <label>
-      <input type="checkbox" name="element" />
-      <span class="select-none">
+    <label class="w-full flex gap-x-1.5" (click)="update()">
+      <div class="checkbox w-5 relative">
+        <input type="checkbox" #checkbox class="opacity-0" />
+        <img
+          src="../../../assets/images/checkbox.svg"
+          alt=""
+          class="absolute top-1/2 left-0 -translate-y-1/2 w-full"
+          draggable="false"
+        />
+        <img
+          src="../../../assets/images/checkbox-selected.svg"
+          alt=""
+          class="checked absolute top-1/2 left-0 -translate-y-1/2 w-full opacity-0"
+          [ngClass]="{ 'opacity-100': checkbox.checked }"
+          draggable="false"
+        />
+      </div>
+      <span class="select-none w-full block my-auto cursor-pointer">
         {{ element }}
       </span>
     </label>

@@ -11,4 +11,5 @@ import { CommonModule } from '@angular/common';
 export class FilterComponent {
   @Input() header = '';
   @Input() filter: any[] | undefined;
+  update() {}
 }

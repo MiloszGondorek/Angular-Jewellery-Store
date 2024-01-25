@@ -1,1 +1,16 @@
-<p>select works!</p>
+<div class="relative" (click)="changeOptionVisability()">
+  <div class="title flex justify-between px-5 py-2">
+    <div>
+      <p class="text-sm header">{{ header }}</p>
+      <p>{{ currentOption }}</p>
+    </div>
+    <img src="../../../assets/images/arrow-down.svg" alt="" draggable="false" />
+  </div>
+  <div class="options absolute w-full bg-white z-10" *ngIf="showOptions">
+    <div *ngFor="let l of options">
+      <p class="px-5 py-3 hover:bg-slate-100" (click)="changeOption(l)">
+        {{ l }}
+      </p>
+    </div>
+  </div>
+</div>

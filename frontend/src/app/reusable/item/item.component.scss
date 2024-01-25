@@ -1,15 +1,24 @@
+$time: 0.4s;
+
 .container {
-  transition: transform 0.4s;
+  transition: transform $time;
   .image,
   .item-image {
-    transition: 0.4s;
+    transition: $time;
   }
 }
-
+.image {
+  .bg {
+    transition: opacity $time;
+  }
+}
 .container:hover {
   transform: translateY(-10px);
   .image {
     box-shadow: 0px 0px 16.1px 5px rgba(171, 171, 171, 0.3);
+    .bg {
+      opacity: 100%;
+    }
   }
   .item-image {
     width: 90%;

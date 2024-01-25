@@ -3,11 +3,12 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { FilterComponent } from './filter/filter.component';
 import { Item, ItemComponent } from '../reusable/item/item.component';
 import { CommonModule } from '@angular/common';
+import { SelectComponent } from '../reusable/select/select.component';
 
 @Component({
   selector: 'app-store',
   standalone: true,
-  imports: [FilterComponent, ItemComponent, CommonModule],
+  imports: [FilterComponent, ItemComponent, CommonModule, SelectComponent],
   templateUrl: './store.component.html',
   styleUrl: './store.component.scss',
 })
