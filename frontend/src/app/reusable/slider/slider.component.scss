@@ -7,3 +7,12 @@
   cursor: pointer;
   z-index: 2;
 }
+
+.dark {
+  h1 {
+    color: #e3a74d;
+  }
+  * {
+    color: #fafafa;
+  }
+}

@@ -20,6 +20,7 @@ import { Item, ItemComponent } from '../item/item.component';
 })
 export class SliderComponent implements AfterContentChecked {
   @Input() header = '';
+  @Input() theme = 'light';
 
   @ViewChild('containerElement', { static: false })
   containerElement!: ElementRef;
