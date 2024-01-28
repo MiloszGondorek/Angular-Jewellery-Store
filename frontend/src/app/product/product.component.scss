@@ -1,3 +1,45 @@
 .bestsellers {
   background-color: #6e7c84;
 }
+
+.line {
+  width: 100%;
+  border-top: 1px solid black;
+}
+
+form {
+  border: 1px solid #e3a74d;
+  $main: #e3a74d;
+  $time: 0.4s;
+  input,
+  textarea {
+    opacity: 70%;
+    background-color: transparent;
+    border: 1px solid $main;
+    color: $main;
+    padding: 5px 15px;
+    outline: none;
+    transition: opacity $time;
+  }
+
+  textarea {
+    padding: 10px 15px;
+  }
+
+  input::placeholder,
+  textarea::placeholder {
+    color: $main;
+    opacity: 60%;
+    transition: opacity $time;
+  }
+
+  textarea:focus,
+  input:focus {
+    opacity: 100%;
+  }
+
+  input:focus::placeholder,
+  textarea:focus::placeholder {
+    color: $main;
+  }
+}

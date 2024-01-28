@@ -11,7 +11,7 @@ import { Component, Input, OnInit } from '@angular/core';
 export class SelectComponent implements OnInit {
   //@Input() options = [];
   options = ['Opcja 1', 'Opcja 2', 'Opcja 3'];
-  header = 'Sortuj';
+  @Input() header = 'Sortuj';
   currentOption: string = '';
   showOptions = false;
   ngOnInit(): void {
