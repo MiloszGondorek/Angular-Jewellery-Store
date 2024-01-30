@@ -5,8 +5,10 @@
     [ngClass]="{ 'aspect-square': !isLarge, large: isLarge }"
     class="h-full w-full object-cover"
   />
-  <div class="title p-3 py-3 absolute w-fit bottom-2 right-2 select-none">
+  <div
+    class="title p-3 py-3 absolute w-fit bottom-2 right-2 select-none opacity-70"
+  >
     <p class="px-3">{{ header }}</p>
-    <div class="line"></div>
+    <div class="line w-full h-[1px]"></div>
   </div>
 </div>

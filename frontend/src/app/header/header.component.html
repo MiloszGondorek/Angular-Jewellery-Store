@@ -1,13 +1,25 @@
 <header class="h-20 px-10 flex">
-  <div class="left flex flex-row gap-x-10 my-auto w-fit">
+  <div class="left flex-row gap-x-10 my-auto w-fit flex">
     <a href="/home"><h1 class="text-3xl">VIVIDA</h1></a>
-    <a href="" class="my-auto text-lg"><p>O nas</p></a>
-    <a href="" class="my-auto text-lg"><p>Biżuteria</p></a>
-    <a href="/contact" class="my-auto text-lg"><p>Kontakt</p></a>
-    <a href="" class="my-auto text-lg"><p>Kolekcje</p></a>
+    <div class="hidden lg:flex flex-row gap-x-10">
+      <a href="/about" class="my-auto text-lg"><p>O nas</p></a>
+      <a href="" class="my-auto text-lg"><p>Biżuteria</p></a>
+      <a href="/contact" class="my-auto text-lg"><p>Kontakt</p></a>
+      <a href="/collections" class="my-auto text-lg"><p>Kolekcje</p></a>
+    </div>
   </div>
-  <div class="right m-auto mr-0 flex flex-row gap-x-10">
-    <a href=""><p>O nas</p></a>
-    <a href=""><p>Biżuteria</p></a>
+  <div class="right m-auto mr-0 hidden flex-row gap-x-10 lg:flex">
+    <a href="" class="flex">
+      <img
+        src="../../assets/images/basket.svg"
+        alt=""
+        class="h-7 w-auto block"
+      />
+      <p class="my-auto ml-2">Koszyk (0)</p>
+    </a>
+    <a href="" class="flex">
+      <img src="../../assets/images/love.svg" alt="" class="h-7 w-auto block" />
+      <p class="my-auto ml-2">Polubiane</p>
+    </a>
   </div>
 </header>

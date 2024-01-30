@@ -10,16 +10,22 @@
 form {
   border: 1px solid #e3a74d;
   $main: #e3a74d;
+  $color: #acacac;
   $time: 0.4s;
+
+  h1 {
+    color: $main;
+  }
+
   input,
   textarea {
-    opacity: 70%;
     background-color: transparent;
-    border: 1px solid $main;
-    color: $main;
+    border: 0;
+    border: 1px solid $color;
+    color: #535353;
     padding: 5px 15px;
     outline: none;
-    transition: opacity $time;
+    transition: color $time, border $time;
   }
 
   textarea {
@@ -28,18 +34,25 @@ form {
 
   input::placeholder,
   textarea::placeholder {
-    color: $main;
-    opacity: 60%;
-    transition: opacity $time;
+    color: $color;
+    transition: color $time;
   }
 
-  textarea:focus,
-  input:focus {
-    opacity: 100%;
+  input:focus,
+  textarea:focus {
+    color: $main;
+    border: 1px solid $main;
   }
 
   input:focus::placeholder,
   textarea:focus::placeholder {
     color: $main;
+  }
+}
+
+.stars {
+  img {
+    display: block;
+    width: 30px;
   }
 }

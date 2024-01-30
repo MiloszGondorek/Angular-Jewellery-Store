@@ -5,6 +5,7 @@ import { SelectComponent } from '../reusable/select/select.component';
 import { CountComponent } from './count/count.component';
 import { ButtonComponent } from '../reusable/button/button.component';
 import { StarComponent } from './star/star.component';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-product',
@@ -15,13 +16,19 @@ import { StarComponent } from './star/star.component';
     SelectComponent,
     CountComponent,
     ButtonComponent,
-    StarComponent
+    StarComponent,
+    CommonModule,
   ],
   templateUrl: './product.component.html',
   styleUrl: './product.component.scss',
 })
 export class ProductComponent {
   name = 'test';
+  src = [
+    '../../assets/images/items/item 1.png',
+    '../../assets/images/items/item 1.png',
+    '../../assets/images/items/item 1.png',
+  ];
   scroll(el: HTMLElement) {
     el.scrollIntoView();
   }

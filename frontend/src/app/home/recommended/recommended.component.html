@@ -11,14 +11,14 @@
     </h1>
     <img
       [ngClass]="{
-        'w-4/5 absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2':
+        'w-4/5 absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 max-h-[110%] block':
           isLarge,
         'h-4/5': !isLarge
       }"
       src="{{ src }}"
       alt=""
       draggable="false"
-      class="object-cover block m-auto"
+      class="object-fill block m-auto"
     />
     <img
       src="../../../assets/images/recommended-bg.svg"

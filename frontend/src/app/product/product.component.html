@@ -1,15 +1,37 @@
 <div class="w-11/12 m-auto max-w-screen-2xl">
-  <div>
+  <div class="my-5">
     <app-link [href]="['Biżuteria', 'Pierścionki', name]" />
   </div>
   <div class="grid grid-cols-2">
     <div class="flex w-full gap-5">
       <div class="flex flex-col w-1/5 gap-5">
-        <div class="aspect-square bg-red-500"></div>
-        <div class="aspect-square bg-red-500"></div>
-        <div class="aspect-square bg-red-500"></div>
+        <div class="relative" *ngFor="let item of src">
+          <img
+            src="../../assets/images/recommended-bg.svg"
+            alt=""
+            class="w-full h-full"
+            draggable="false"
+          />
+          <img
+            src="{{ item }}"
+            class="w-4/5 h-4/5 object-contain block absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+            draggable="false"
+          />
+        </div>
       </div>
-      <div class="aspect-square bg-red-500 h-full"></div>
+      <div class="relative">
+        <img
+          src="../../assets/images/recommended-bg.svg"
+          alt=""
+          class="w-full h-full"
+          draggable="false"
+        />
+        <img
+          src="../../assets/images/items/item 1.png"
+          class="w-4/5 h-4/5 object-contain block absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+          draggable="false"
+        />
+      </div>
     </div>
     <div class="flex flex-col justify-between h-full">
       <div>
@@ -47,7 +69,7 @@
     </div>
   </div>
 </div>
-<div class="bestsellers py-4 my-10">
+<div class="bestsellers pb-5 pt-10 my-10">
   <slider header="Podobne produkty" theme="dark" />
 </div>
 <div #desc class="w-11/12 m-auto max-w-screen-2xl flex flex-col gap-y-5">
@@ -112,7 +134,7 @@
               type="text"
               name=""
               id=""
-              placeholder="Name i surname"
+              placeholder="Name"
               class="w-full"
             />
             <input
@@ -124,11 +146,20 @@
             />
           </div>
           <textarea placeholder="Your opinion" class="w-full mt-4"></textarea>
-          <button-border
-            [isFull]="true"
-            text="Prześlij opinie"
-            class="ml-auto block w-fit"
-          />
+          <div class="flex">
+            <div class="stars flex gap-x-2">
+              <img src="../../assets/images/arrow-down.svg" alt="" />
+              <img src="../../assets/images/arrow-down.svg" alt="" />
+              <img src="../../assets/images/arrow-down.svg" alt="" />
+              <img src="../../assets/images/arrow-down.svg" alt="" />
+              <img src="../../assets/images/arrow-down.svg" alt="" />
+            </div>
+            <button-border
+              [isFull]="true"
+              text="Prześlij opinie"
+              class="ml-auto block w-fit"
+            />
+          </div>
         </div>
       </form>
     </div>

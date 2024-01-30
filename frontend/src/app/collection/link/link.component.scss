@@ -1,0 +1,10 @@
+.content {
+  min-width: min(400px, 50%);
+}
+
+.shadow-left {
+  box-shadow: -16px 16px 16px 0px rgba(171, 171, 171, 0.3);
+}
+.shadow-right {
+  box-shadow: 16px 16px 16px 0px rgba(171, 171, 171, 0.3);
+}
