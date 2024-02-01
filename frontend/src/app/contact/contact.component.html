@@ -1,5 +1,5 @@
 <h1 class="w-fit m-auto text-3xl my-10 cinzel font-bold">Contact</h1>
-<div class="grid grid-cols-2 w-4/5 max-w-screen-lg mx-auto gap-x-4 mb-10">
+<div class="flex flex-col-reverse lg:grid grid-cols-2 w-4/5 max-w-screen-lg mx-auto gap-4 mb-10">
   <div>
     <h2 class="text-2xl cinzel">Contact info</h2>
     <div class="flex flex-col gap-y-5 mt-8">
@@ -29,6 +29,6 @@
       class="font-normal text-sm min-h-52"
       placeholder="Message"
     ></textarea>
-    <button-border text="Wyślij" class="ml-auto" />
+    <button-border text="Wyślij" class="ml-auto w-full lg:w-1/2" [fullWidth]="true" />
   </div>
 </div>

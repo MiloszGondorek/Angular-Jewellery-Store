@@ -2,9 +2,9 @@ import { Component } from '@angular/core';
 import { ProsComponent } from './pros/pros.component';
 import { RecommendedComponent } from './recommended/recommended.component';
 import { ButtonComponent } from '../reusable/button/button.component';
-import { PresentLinkComponent } from './present-link/present-link.component';
 import { SliderComponent } from '../reusable/slider/slider.component';
 import { IgImgComponent } from './ig-img/ig-img.component';
+import { PresentContainerComponent } from './present-container/present-container.component';
 
 @Component({
   selector: 'app-home',
@@ -13,9 +13,9 @@ import { IgImgComponent } from './ig-img/ig-img.component';
     ProsComponent,
     RecommendedComponent,
     ButtonComponent,
-    PresentLinkComponent,
     SliderComponent,
     IgImgComponent,
+    PresentContainerComponent
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',

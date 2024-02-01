@@ -1,13 +1,13 @@
 <div
-  class="w-full flex about-content min-h-[20vw]"
-  [ngClass]="{ 'flex-row-reverse': reverse }"
+  class="w-full flex flex-col md:flex-row about-content min-h-[20vw]"
+  [ngClass]="{ 'md:flex-row-reverse': reverse }"
 >
-  <div class="w-1/2 h-full my-auto">
+  <div class="w-full md:w-1/2 h-full my-auto">
     <div class="w-4/5 m-auto py-10">
       <ng-content></ng-content>
     </div>
   </div>
-  <div class="relative w-1/2">
+  <div class="relative w-full md:w-1/2 h-[30vh]">
     <img
       src="{{ src }}"
       alt=""
