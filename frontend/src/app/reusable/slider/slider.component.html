@@ -1,4 +1,4 @@
-<div [ngClass]="{ dark: theme == 'dark' }">
+<div [ngClass]="{ dark: theme == 'dark' }" class="">
   <h1 class="m-auto w-fit cinzel text-4xl mb-8">
     {{ header }}
   </h1>
@@ -8,22 +8,28 @@
       src="../../../assets/images/arrow-left.svg"
       class="arrow absolute left-0"
       [ngStyle]="{ 'top.px': topPx }"
+      (click)="moveLeft()"
     />
-    <div class="flex justify-center gap-x-5" #containerElement>
-      <item
+    <div class="flex gap-x-5 overflow-x-clip bg-red" #containerElement>
+      <div
+        class="min-w-[calc((100%-1.25rem)/2)] sm:min-w-[calc((100%-3*1.25rem)/4)] lg:min-w-[calc((100%-4*1.25rem)/5)] w-1 item-container"
         *ngFor="let item of items"
-        src="../../assets/images/items/item 1.png"
-        name="Nazwa"
-        class="w-full"
-        [price]="item.getName()"
         #child
-      />
+      >
+        <item
+          src="../../assets/images/items/item 1.png"
+          name="Nazwa"
+          class="w-full"
+          [price]="item.getName()"
+        />
+      </div>
     </div>
     <img
       class="r_arrow"
       src="../../../assets/images/arrow-right.svg"
       class="arrow absolute right-0"
       [ngStyle]="{ 'top.px': topPx }"
+      (click)="moveRight()"
     />
   </div>
 </div>

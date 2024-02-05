@@ -6,6 +6,7 @@ import {
   HostListener,
   AfterContentChecked,
   ViewChildren,
+  QueryList,
 } from '@angular/core';
 
 import { CommonModule } from '@angular/common';
@@ -29,10 +30,42 @@ export class SliderComponent implements AfterContentChecked {
   items: Item[] = [];
 
   constructor() {
-    for (var i = 0; i < 5; i++) {
-      const newItem = new Item(i * 7);
+    for (var i = 0; i < 12; i++) {
+      const newItem = new Item(i);
       this.items.push(newItem);
     }
+  }
+
+  @ViewChildren('child') childs!: QueryList<ElementRef>;
+
+  currentX = 0;
+  elementsInRow = 5;
+
+  moveLeft() {
+    this.currentX--;
+    this.move();
+  }
+
+  moveRight() {
+    this.currentX++;
+    this.move();
+  }
+
+  checkPositions() {
+    if (this.currentX == 1) {
+      this.currentX = -this.items.length + this.elementsInRow;
+    }
+    if (this.elementsInRow - this.currentX > this.items.length) {
+      this.currentX = 0;
+    }
+  }
+
+  move() {
+    this.checkPositions();
+    this.childs.forEach((child) => {
+      const element = child.nativeElement as HTMLElement;
+      element.style.transform = `translateX(calc((100% + 1.25rem) * ${this.currentX} ))`;
+    });
   }
 
   ngAfterContentChecked(): void {
@@ -49,6 +82,23 @@ export class SliderComponent implements AfterContentChecked {
   }
 
   @HostListener('window:resize', ['$event'])
+  onResize() {
+    this.setButtonVerticaly();
+    this.checkRowCount();
+  }
+
+  checkRowCount() {
+    if (window.innerWidth >= 1024) {
+      this.elementsInRow = 5;
+    } else if (window.innerWidth >= 640) {
+      this.elementsInRow = 4;
+    } else {
+      this.elementsInRow = 2;
+    }
+    this.checkPositions();
+    this.move();
+  }
+
   setButtonVerticaly() {
     Slider.callF();
   }
