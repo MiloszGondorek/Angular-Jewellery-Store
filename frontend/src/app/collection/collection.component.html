@@ -26,6 +26,13 @@
 
 <div class="w-4/5 m-auto flex flex-col gap-y-10 max-w-screen-xl mb-8">
   <app-link
+    *ngFor="let link of collections"
+    [header]="link.name"
+    [desc]="link.desc"
+    [src]="link.img"
+    [flotRight]="link.floatRight"
+  />
+  <!-- <app-link 
     header="asd"
     desc="Kolekcja inspirowana pięknem natury, gdzie delikatne formy i precyzyjne
   zdobienia odzwierciedlają subtelność otaczającego świata, tworząc
@@ -54,5 +61,5 @@
   biżuterię pełną wdzięku."
     src="../../assets/images/collections/collection 4.png"
     [flotRight]="true"
-  />
+  /> -->
 </div>
