@@ -8,7 +8,7 @@
       src="../../../assets/images/arrow-left.svg"
       class="arrow absolute left-0"
       [ngStyle]="{ 'top.px': topPx }"
-      (click)="moveLeft()"
+      (click)="moveRight()"
     />
     <div class="flex gap-x-5 overflow-x-clip bg-red" #containerElement>
       <div
@@ -29,7 +29,7 @@
       src="../../../assets/images/arrow-right.svg"
       class="arrow absolute right-0"
       [ngStyle]="{ 'top.px': topPx }"
-      (click)="moveRight()"
+      (click)="moveLeft()"
     />
   </div>
 </div>

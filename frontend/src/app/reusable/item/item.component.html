@@ -1,4 +1,4 @@
-<a href="product/{{ name }}">
+<a href="product/{{ id }}">
   <div class="container cursor-pointer">
     <div class="relative w-full image" #itemElement>
       <img
@@ -13,9 +13,9 @@
         draggable="false"
       />
     </div>
-    <h1 class="text-2xl font-normal mt-2">{{ name }}</h1>
-    <p class="text-xl">
-      {{ price }} <span class="text-lg font-light">PLN</span>
+    <h1 class="text-xl font-normal mt-2">{{ name }}</h1>
+    <p class="text-lg">
+      {{ price }} <span class="text-base font-light">PLN</span>
     </p>
   </div>
 </a>

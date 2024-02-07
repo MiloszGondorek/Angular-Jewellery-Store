@@ -31,7 +31,7 @@ export class SliderComponent implements AfterContentChecked {
 
   constructor() {
     for (var i = 0; i < 12; i++) {
-      const newItem = new Item(i.toString(), 'asd');
+      const newItem = new Item(i.toString(), 'asd', 1, 1);
       this.items.push(newItem);
     }
   }

@@ -1,0 +1,10 @@
+::ng-deep {
+  .layout {
+    display: flex;
+    flex-direction: column;
+  }
+  .page {
+    height: 100%;
+    margin-top: auto;
+  }
+}

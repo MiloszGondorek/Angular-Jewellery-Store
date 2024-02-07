@@ -31,7 +31,9 @@ export class StoreComponent implements OnInit {
     for (var i = 1; i <= 50; i++) {
       const newItem = new Item(
         i.toString(),
-        'http://localhost:1337/uploads/item_1_1049144ce4.png'
+        'http://localhost:1337/uploads/item_1_1049144ce4.png',
+        1,
+        1
       );
       this.items.push(newItem);
     }
@@ -44,7 +46,9 @@ export class StoreComponent implements OnInit {
       const imgUrl =
         http.getURL() + element.attributes.MainImage.data.attributes.url;
       const title = element.attributes.Name;
-      const newItem = new Item(title, imgUrl);
+      const price = element.attributes.Price;
+      const id = element.id;
+      const newItem = new Item(title, imgUrl, price, id);
       this.items.push(newItem);
     });
   }
