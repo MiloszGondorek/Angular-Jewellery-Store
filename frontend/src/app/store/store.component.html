@@ -16,8 +16,8 @@
   </div>
 </div>
 
-<div class="w-4/5 mx-auto flex my-8 gap-x-10">
-  <div class="filter min-w-64 sticky top-5 h-fit">
+<div class="w-4/5 mx-auto flex flex-col md:flex-row my-8 gap-x-10">
+  <div class="filter min-w-64 relative mb-5 md:mb-0 md:sticky md:top-28 h-fit">
     <app-select />
     <filter header="Metal" [filter]="['Srebro', 'Złoto']" />
     <filter
@@ -35,9 +35,9 @@
   >
     <item
       *ngFor="let item of items"
-      name="item"
-      [price]="item.getName()"
-      src="../../assets/images/items/item 1.png"
+      [name]="item.getName()"
+      [price]="1"
+      [src]="item.getSrc()"
     ></item>
   </div>
 </div>

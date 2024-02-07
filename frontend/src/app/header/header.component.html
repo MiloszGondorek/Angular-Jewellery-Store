@@ -3,7 +3,6 @@
     <a href="/home"><h1 class="text-3xl">VIVIDA</h1></a>
     <div class="hidden lg:flex flex-row gap-x-10">
       <a href="/about" class="my-auto text-lg"><p>O nas</p></a>
-      <a href="" class="my-auto text-lg"><p>Biżuteria</p></a>
       <a href="/contact" class="my-auto text-lg"><p>Kontakt</p></a>
       <a href="/collections" class="my-auto text-lg"><p>Kolekcje</p></a>
     </div>
@@ -23,11 +22,19 @@
     </a>
   </div>
   <div class="right m-auto mr-0 block lg:hidden">
-    <img src="../../assets/images/love.svg" alt="" class="h-7 w-auto block cursor-pointer"(click)="changeHeader()">
+    <img
+      src="../../assets/images/love.svg"
+      alt=""
+      class="h-7 w-auto block cursor-pointer"
+      (click)="changeHeader()"
+    />
   </div>
 </header>
 
-<div class="absolute right-0 h-screen w-[75vw] max-w-[350px] bg-white z-10 side-header" #header>
+<div
+  class="absolute right-0 h-screen w-[75vw] max-w-[350px] bg-white z-10 side-header lg:hidden"
+  #header
+>
   <div class="side-links flex flex-col gap-x-10">
     <a href="/about" class="my-auto text-lg"><p>O nas</p></a>
     <a href="" class="my-auto text-lg"><p>Biżuteria</p></a>

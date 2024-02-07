@@ -4,6 +4,7 @@ import { FilterComponent } from './filter/filter.component';
 import { Item, ItemComponent } from '../reusable/item/item.component';
 import { CommonModule } from '@angular/common';
 import { SelectComponent } from '../reusable/select/select.component';
+import { http } from '../../httpConnection';
 
 @Component({
   selector: 'app-store',
@@ -28,8 +29,23 @@ export class StoreComponent implements OnInit {
     }
     this.header = category;
     for (var i = 1; i <= 50; i++) {
-      const newItem = new Item(i);
+      const newItem = new Item(
+        i.toString(),
+        'http://localhost:1337/uploads/item_1_1049144ce4.png'
+      );
       this.items.push(newItem);
     }
+    this.getData();
+  }
+
+  async getData() {
+    const data = await http.getData('items?populate=*');
+    data.forEach((element: any, index: any) => {
+      const imgUrl =
+        http.getURL() + element.attributes.MainImage.data.attributes.url;
+      const title = element.attributes.Name;
+      const newItem = new Item(title, imgUrl);
+      this.items.push(newItem);
+    });
   }
 }

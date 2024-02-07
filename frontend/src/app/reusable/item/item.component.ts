@@ -28,14 +28,16 @@ export class ItemComponent implements AfterViewInit {
 }
 
 export class Item {
-  name = 123;
-  constructor(num: number) {
+  name: string = '';
+  src: string = '';
+  constructor(num: string, src: string) {
     this.name = num;
+    this.src = src;
   }
   getName() {
     return this.name;
   }
-  static generate() {
-    return this.name;
+  getSrc() {
+    return this.src;
   }
 }

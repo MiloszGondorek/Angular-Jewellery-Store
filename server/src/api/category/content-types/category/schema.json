@@ -1,10 +1,10 @@
 {
   "kind": "collectionType",
-  "collectionName": "collections",
+  "collectionName": "categories",
   "info": {
-    "singularName": "collection",
-    "pluralName": "collections",
-    "displayName": "Collection",
+    "singularName": "category",
+    "pluralName": "categories",
+    "displayName": "Category",
     "description": ""
   },
   "options": {
@@ -12,28 +12,19 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "Title": {
+    "Name": {
       "type": "string",
       "required": true,
       "unique": true
     },
-    "Image": {
-      "type": "media",
-      "multiple": false,
-      "required": true,
-      "allowedTypes": [
-        "images"
-      ]
-    },
     "Description": {
-      "type": "text",
-      "required": true
+      "type": "text"
     },
     "items": {
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::item.item",
-      "mappedBy": "collection"
+      "mappedBy": "category"
     }
   }
 }
