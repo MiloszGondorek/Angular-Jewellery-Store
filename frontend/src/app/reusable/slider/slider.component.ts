@@ -26,6 +26,8 @@ export class SliderComponent implements AfterContentChecked {
   @ViewChild('containerElement', { static: false })
   containerElement!: ElementRef;
 
+  @ViewChildren('child') childs!: QueryList<ElementRef>;
+
   topPx: number | undefined;
   items: Item[] = [];
 
@@ -35,8 +37,6 @@ export class SliderComponent implements AfterContentChecked {
       this.items.push(newItem);
     }
   }
-
-  @ViewChildren('child') childs!: QueryList<ElementRef>;
 
   currentX = 0;
   elementsInRow = 5;

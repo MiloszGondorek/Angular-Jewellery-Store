@@ -874,6 +874,7 @@ export interface ApiItemItem extends Schema.CollectionType {
       'manyToOne',
       'api::collection.collection'
     >;
+    Details: Attribute.Text;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

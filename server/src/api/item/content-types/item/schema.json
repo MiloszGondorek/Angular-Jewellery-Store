@@ -58,6 +58,9 @@
       "relation": "manyToOne",
       "target": "api::collection.collection",
       "inversedBy": "items"
+    },
+    "Details": {
+      "type": "text"
     }
   }
 }

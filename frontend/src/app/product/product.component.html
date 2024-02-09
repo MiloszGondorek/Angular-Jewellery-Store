@@ -2,48 +2,103 @@
   <div class="my-5">
     <app-link [href]="['Biżuteria', 'Pierścionki', name]" />
   </div>
-  <div class="flex xl:grid grid-cols-2 gap-5">
-    <div class="flex flex-col xl:flex-row w-2/5 xl:w-full gap-5">
-      <div class="grid grid-cols-3 xl:grid-cols-1 xl:grid-rows-3 w-full xl:w-1/5 gap-5">
-        <div class="relative" *ngFor="let item of src">
-          <img src="../../assets/images/recommended-bg.svg" alt="" class="w-full h-full" draggable="false" />
-          <img src="{{ item }}"
+  <div
+    class="max-w-[650px] min-h-[400px] lg:max-w-none mx-auto xl:max-w-none flex xl:grid grid-cols-2 gap-5 flex-col-reverse lg:flex-row"
+  >
+    <div class="flex flex-col xl:flex-row w-full lg:w-2/5 xl:w-full gap-5">
+      <div
+        class="flex flex-row xl:flex-col xl:w-fit gap-5 overflow-hidden xl:h-1 xl:min-h-full relative"
+      >
+        <div
+          class="h-full xl:h-fit xl:w-full absolute left-0 top-1/2 -translate-y-1/2 xl:translate-y-0 xl:left-1/2 xl:top-0 xl:-translate-x-1/2 z-10 bg-gray-200 opacity-80 hover:opacity-100 cursor-pointer flex justify-center"
+          (click)="moveUp()"
+          *ngIf="true"
+        >
+          <img
+            src="../../assets/images/arrow-up.svg"
+            alt=""
+            class="hidden xl:block m-auto p-2"
+          />
+          <img
+            src="../../assets/images/arrow-left.svg"
+            alt=""
+            class="block xl:hidden m-auto p-2"
+          />
+        </div>
+        <div
+          class="h-full xl:h-fit xl:w-full absolute right-0 bottom-1/2 translate-y-1/2 xl:translate-y-0 xl:left-1/2 xl:bottom-0 xl:-translate-x-1/2 z-10 bg-gray-200 opacity-80 hover:opacity-100 cursor-pointer flex justify-center"
+          (click)="moveDown()"
+        >
+          <img
+            src="../../assets/images/arrow-down.svg"
+            alt=""
+            class="hidden xl:block m-auto p-2"
+          />
+          <img
+            src="../../assets/images/arrow-right.svg"
+            alt=""
+            class="block xl:hidden m-auto p-2"
+          />
+        </div>
+        <div
+          class="relative aspect-square h-fit w-1 min-w-[calc((100%-2.5rem)/3)] xl:w-full xl:min-w-fit xl:h-1 xl:min-h-[calc((100%-2.5rem)/3)] itemImg"
+          *ngFor="let item of src"
+          #child
+          [ngClass]="{ border: item == mainSrc }"
+        >
+          <img
+            src="../../assets/images/recommended-bg.svg"
+            alt=""
+            class="w-full h-full"
+            draggable="false"
+          />
+          <img
+            src="{{ item }}"
             class="w-4/5 h-4/5 object-contain block absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
-            draggable="false" />
+            draggable="false"
+            (click)="setImage(item)"
+          />
         </div>
       </div>
       <div class="relative">
-        <img src="../../assets/images/recommended-bg.svg" alt="" class="w-full h-full" draggable="false" />
-        <img src="../../assets/images/items/item 1.png"
+        <img
+          src="../../assets/images/recommended-bg.svg"
+          alt=""
+          class="w-full h-full"
+          draggable="false"
+        />
+        <img
+          src="{{ mainSrc }}"
           class="w-4/5 h-4/5 object-contain block absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
-          draggable="false" />
+          draggable="false"
+        />
       </div>
     </div>
-    <div class="flex flex-col justify-between h-auto w-3/5 xl:w-full xl:h-full">
+    <div
+      class="flex flex-col justify-between h-auto w-full lg:w-3/5 xl:w-full xl:h-full"
+    >
       <div>
         <h1 class="text-2xl font-medium">{{ name }}</h1>
-        <div class="stars">☆☆☆☆☆</div>
-        <p class="text-xl">1120zł</p>
+        <p class="text-xl">{{ price }} zł</p>
       </div>
-      <div>
-        <p>
-          Złoty pierścień z naszej kolekcji to nie tylko biżuteria, to prawdziwy
-          symbol elegancji i klasy. Wykonany ze złota najwyższej jakości, ten
-          wyjątkowy pierścień emanuje subtelnym blaskiem, który podkreśla Twoją
-          wyrafinowaną estetykę. Złocone piękno tego pierścienia sprawia, że
-          staje się on nie tylko ozdobą, ale także wyrazem Twojego
-          niepowtarzalnego stylu i luksusu. Dla tych, którzy pragną nosić ze
-          sobą nie tylko biżuterię, ale także wyjątkowy fragment szlachetnego
-          piękna...
+      <div class="xl:my-4">
+        <p class="text-justify">
+          {{ description[0] }}
         </p>
-        <p (click)="scroll(desc)" class="cursor-pointer">Czytaj więcej</p>
+        <p
+          (click)="scroll(desc)"
+          class="cursor-pointer mt-4 xl:mt-2 text-[#E3A74D]"
+          *ngIf="description.length > 0"
+        >
+          Czytaj więcej
+        </p>
       </div>
-      <div>
-        <div class="w-1/2 min-w-52 mb-3">
+      <div class="mt-5 lg:mt-0">
+        <div class="w-full lg:w-1/2 min-w-52 mb-3">
           <app-select header="Size" />
         </div>
-        <div class="flex gap-x-3">
-          <div class="w-max">
+        <div class="flex gap-3 flex-col sm:flex-row">
+          <div class="w-full sm:w-max">
             <app-count />
           </div>
           <div class="w-full">
@@ -60,80 +115,21 @@
 </div>
 <div #desc class="w-11/12 m-auto max-w-screen-2xl flex flex-col gap-y-5 mb-8">
   <h1 class="text-2xl">O produkcie</h1>
-  <p>
-    Złoty pierścień z naszej kolekcji to nie tylko biżuteria, to prawdziwy
-    symbol elegancji i klasy. Wykonany ze złota najwyższej jakości, ten
-    wyjątkowy pierścień emanuje subtelnym blaskiem, który podkreśla Twoją
-    wyrafinowaną estetykę. Złocone piękno tego pierścienia sprawia, że staje się
-    on nie tylko ozdobą, ale także wyrazem Twojego niepowtarzalnego stylu i
-    luksusu. Dla tych, którzy pragną nosić ze sobą nie tylko biżuterię, ale
-    także wyjątkowy fragment szlachetnego piękna.
-  </p>
-  <p>
-    Złoty pierścień z naszej ekskluzywnej kolekcji to doskonałe połączenie
-    tradycji złotnictwa i nowoczesnego designu. Wyjątkowy błysk i ciepło złota
-    najwyższej jakości dodają temu pierścieniowi niepowtarzalnej elegancji,
-    czyniąc go nie tylko ozdobą, lecz także symbolem wyrafinowanego luksusu.
-  </p>
-  <p>
-    Jego subtelna konstrukcja idealnie otula palce, a precyzyjne zdobienia
-    tworzą delikatny, lecz niezapomniany efekt wizualny. To nie tylko biżuteria,
-    ale także wyrażenie Twojego niepowtarzalnego stylu i wyjątkowości. Każdy
-    noszony pierścień jest wyjątkowym akcentem, który podkreśla Twoją osobowość,
-    sprawiając, że każda chwila staje się niezwykła. Złoty pierścień z naszej
-    kolekcji to więcej niż tylko ozdoba – to wyjątkowy fragment szlachetnego
-    piękna, który towarzyszy Ci z klasą i wdziękiem.
+  <p *ngFor="let paragraph of description">
+    {{ paragraph }}
   </p>
   <div>
     <div class="line my-4"></div>
     <div class="flex">
       <h1 class="text-2xl font-medium w-48">Szczegóły</h1>
       <div class="flex flex-col gap-y-1.5">
-        <p>Kruszec: <span>złoto</span></p>
-        <p>Próba: <span>925</span></p>
-        <p>Zapięcie typu: <span>bigiel</span></p>
-        <p>Zdobienie: <span>bezbarwne cyrkonie</span></p>
-        <p>Średnia gramatura: <span>poniżej 5g</span></p>
+        <p *ngFor="let paragraph of details">
+          {{ paragraph.split(":")[0]
+          }}<span *ngIf="paragraph.split(':').length > 1" class="font-semibold"
+            >: {{ paragraph.split(":")[1] }}</span
+          >
+        </p>
       </div>
     </div>
   </div>
-  <!-- <div class="mb-8">
-    <div class="line my-4"></div>
-    <div class="flex flex-col md:flex-row justify-between w-full">
-      <div class="flex justify-between md:flex-col lg:flex-row gap-y-4 w-full">
-        <h1 class="text-2xl font-medium w-48">Opinie</h1>
-        <div class="flex flex-col gap-y-1.5">
-          <star desc="5 gwiazdek" [count]="2" [max]="8" />
-          <star desc="4 gwiazdek" [count]="3" [max]="8" />
-          <star desc="3 gwiazdek" [count]="1" [max]="8" />
-          <star desc="2 gwiazdek" [count]="2" [max]="8" />
-          <star desc="1 gwiazdek" [count]="0" [max]="8" />
-        </div>
-      </div>
-      <form action="" class="w-full md:max-w-[60%] 2xl:w-4/5 2xl:max-w-screen-md py-6">
-        <h1 class="w-fit m-auto mb-6 text-xl mukta font-medium">
-          Napisz opinie
-        </h1>
-        <div class="w-4/5 m-auto">
-          <div class="flex flex-col lg:flex-row w-full gap-x-5 gap-y-4">
-            <input type="text" name="" id="" placeholder="Name" class="w-full" />
-            <input type="text" name="" id="" placeholder="E-mail" class="w-full" />
-          </div>
-          <textarea placeholder="Your opinion" class="w-full mt-4"></textarea>
-          <div class="flex flex-col lg:flex-row">
-            <div class="stars flex gap-x-2 mx-auto lg:mx-0 my-2 lg:my-0">
-              <img src="../../assets/images/arrow-down.svg" alt="" />
-              <img src="../../assets/images/arrow-down.svg" alt="" />
-              <img src="../../assets/images/arrow-down.svg" alt="" />
-              <img src="../../assets/images/arrow-down.svg" alt="" />
-              <img src="../../assets/images/arrow-down.svg" alt="" />
-            </div>
-            <div class="w-full lg:w-auto ml-auto">
-              <button-border [isFull]="true" [fullWidth]="true" text="Prześlij opinie" class="block lg:w-fit" />
-            </div>
-          </div>
-        </div>
-      </form>
-    </div>
-  </div> -->
 </div>
