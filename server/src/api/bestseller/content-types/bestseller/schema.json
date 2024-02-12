@@ -1,0 +1,20 @@
+{
+  "kind": "singleType",
+  "collectionName": "bestsellers",
+  "info": {
+    "singularName": "bestseller",
+    "pluralName": "bestsellers",
+    "displayName": "Bestseller"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "items": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::item.item"
+    }
+  }
+}

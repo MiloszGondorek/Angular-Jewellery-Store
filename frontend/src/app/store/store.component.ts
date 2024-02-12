@@ -28,20 +28,15 @@ export class StoreComponent implements OnInit {
       this.router.navigateByUrl('/home');
     }
     this.header = category;
-    for (var i = 1; i <= 50; i++) {
-      const newItem = new Item(
-        i.toString(),
-        'http://localhost:1337/uploads/item_1_1049144ce4.png',
-        1,
-        1
-      );
-      this.items.push(newItem);
-    }
-    this.getData();
+    const id = this.route.snapshot.paramMap.get('category');
+    this.getData(id);
   }
 
-  async getData() {
-    const data = await http.getData('items?populate=*');
+  async getData(id: any) {
+    console.log(id);
+    const data = await http.getData(
+      `items?populate=*&filters[category][Name][$eq]=${id}`
+    );
     data.forEach((element: any, index: any) => {
       const imgUrl =
         http.getURL() + element.attributes.MainImage.data.attributes.url;

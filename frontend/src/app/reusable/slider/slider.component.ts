@@ -1,14 +1,16 @@
 import {
   Component,
-  ViewChild,
   ElementRef,
   Input,
   HostListener,
-  AfterContentChecked,
   ViewChildren,
   QueryList,
+  ChangeDetectorRef,
+  AfterViewChecked,
+  OnInit,
 } from '@angular/core';
 
+import { http } from '../../../httpConnection';
 import { CommonModule } from '@angular/common';
 import { Item, ItemComponent } from '../item/item.component';
 
@@ -19,23 +21,47 @@ import { Item, ItemComponent } from '../item/item.component';
   templateUrl: './slider.component.html',
   styleUrl: './slider.component.scss',
 })
-export class SliderComponent implements AfterContentChecked {
+export class SliderComponent implements OnInit, AfterViewChecked {
   @Input() header = '';
   @Input() theme = 'light';
+  @Input() bestsellers = false;
 
-  @ViewChild('containerElement', { static: false })
-  containerElement!: ElementRef;
-
+  constructor(private cdr: ChangeDetectorRef) {}
   @ViewChildren('child') childs!: QueryList<ElementRef>;
 
   topPx: number | undefined;
+  showArrows: boolean = true;
   items: Item[] = [];
 
-  constructor() {
-    for (var i = 0; i < 12; i++) {
-      const newItem = new Item(i.toString(), 'asd', 1, 1);
-      this.items.push(newItem);
+  ngOnInit(): void {
+    if (this.bestsellers) {
+      this.generate();
+    } else {
+      for (var i = 0; i < 12; i++) {
+        const newItem = new Item(i.toString(), 'asd', 1, 1);
+        this.items.push(newItem);
+      }
     }
+  }
+  ngAfterViewChecked() {
+    this.setButtonMt();
+  }
+
+  async generate() {
+    const data = await http.getData(
+      `items?populate=*&filters[category][Name][$eq]=rings`
+    );
+
+    data.forEach((element: any) => {
+      const imgUrl =
+        http.getURL() + element.attributes.MainImage.data.attributes.url;
+      const title = element.attributes.Name;
+      const price = element.attributes.Price;
+      const id = element.id;
+      const newItem = new Item(title, imgUrl, price, id);
+      this.items.push(newItem);
+    });
+    this.checkRowCount();
   }
 
   currentX = 0;
@@ -68,22 +94,9 @@ export class SliderComponent implements AfterContentChecked {
     });
   }
 
-  ngAfterContentChecked(): void {
-    if (this.containerElement) {
-      Slider.setF((x: any) => {
-        this.set(x);
-      });
-      this.setButtonVerticaly();
-    }
-  }
-
-  set(x: any) {
-    this.topPx = x.nativeElement.offsetWidth / 2;
-  }
-
   @HostListener('window:resize', ['$event'])
   onResize() {
-    this.setButtonVerticaly();
+    this.setButtonMt();
     this.checkRowCount();
   }
 
@@ -95,33 +108,22 @@ export class SliderComponent implements AfterContentChecked {
     } else {
       this.elementsInRow = 2;
     }
+
+    this.showArrows = this.items.length > this.elementsInRow;
+
     this.checkPositions();
     this.move();
   }
 
-  setButtonVerticaly() {
-    Slider.callF();
-  }
-}
-
-export class Slider {
-  static element: any;
-  static f: Function | undefined;
-
-  static setF(newF: Function) {
-    this.f = newF;
+  element: any;
+  setElement(element: any) {
+    this.element = element;
   }
 
-  static callF() {
-    if (this.f) this.f(this.element);
-  }
-
-  static setElement(x: any) {
-    this.element = x;
-    this.callF();
-  }
-
-  static getElement() {
-    return this.element;
+  setButtonMt() {
+    if (this.element != undefined) {
+      this.topPx = this.element.nativeElement.offsetHeight / 2;
+      this.cdr.detectChanges();
+    }
   }
 }

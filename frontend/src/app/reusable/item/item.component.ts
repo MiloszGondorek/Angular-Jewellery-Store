@@ -1,12 +1,13 @@
 import {
   Component,
   Input,
-  AfterContentChecked,
   ViewChild,
   ElementRef,
   AfterViewInit,
+  Output,
+  EventEmitter,
+  AfterContentInit,
 } from '@angular/core';
-import { Slider } from '../slider/slider.component';
 
 @Component({
   selector: 'item',
@@ -23,8 +24,10 @@ export class ItemComponent implements AfterViewInit {
 
   @ViewChild('itemElement', { static: false })
   itemElement!: ElementRef;
-  ngAfterViewInit(): void {
-    Slider.setElement(this.itemElement);
+  @Output() childCreated: EventEmitter<any> = new EventEmitter<any>();
+
+  ngAfterViewInit() {
+    this.childCreated.emit(this.itemElement);
   }
 }
 

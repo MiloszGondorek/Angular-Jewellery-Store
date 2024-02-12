@@ -1,9 +1,13 @@
 <div class="flex flex-col gap-y-24">
   <div class="main w-full h-fit">
     <div class="top relative w-full">
-      <img src="../../assets/images/Main.png" class="w-full h-full object-cover max-h-[60vh] absolute" />
+      <img
+        src="../../assets/images/Main.png"
+        class="w-full h-full object-cover max-h-[60vh] absolute"
+      />
       <div
-        class="left m-auto lg:m-0 w-full sm:w-4/5 lg:w-1/2 h-full min-h-[400px] 2xl:min-h-[550px] opacity-80 flex flex-col justify-center">
+        class="left m-auto lg:m-0 w-full sm:w-4/5 lg:w-1/2 h-full min-h-[400px] 2xl:min-h-[550px] opacity-80 flex flex-col justify-center"
+      >
         <div class="content w-2/3 max-w-lg m-auto">
           <h2 class="text-4xl">
             Welcome to the World of Elegance Vivida jewelry
@@ -12,59 +16,104 @@
             At Vivida Jewelry, we create unique works of art that exude beauty,
             classicity and individual style.
           </p>
-          <button-border link="home" text="Discover >" class="ml-auto block w-fit mt-16" />
+          <button-border
+            link="home"
+            text="Discover >"
+            class="ml-auto block w-fit mt-16"
+          />
         </div>
       </div>
     </div>
     <div
-      class="pros flex flex-col sm:flex-row justify-between m-auto w-full sm:w-11/12 xl:w-5/6 gap-x-8 gap-y-5 pt-4 sm:pt-14">
-      <pros link="../../assets/images/guarantee.svg" header="Gwarancja Jakości i Piękna"
-        desc="Każdy nasz produkt to gwarancja nie tylko doskonałej jakości, ale także niepowtarzalnego piękna." />
-      <pros link="../../assets/images/diamond.svg" header="Ekskluzywna Kolekcja Biżuterii"
+      class="pros flex flex-col sm:flex-row justify-between m-auto w-full sm:w-11/12 xl:w-5/6 gap-x-8 gap-y-5 pt-4 sm:pt-14"
+    >
+      <pros
+        link="../../assets/images/guarantee.svg"
+        header="Gwarancja Jakości i Piękna"
+        desc="Każdy nasz produkt to gwarancja nie tylko doskonałej jakości, ale także niepowtarzalnego piękna."
+      />
+      <pros
+        link="../../assets/images/diamond.svg"
+        header="Ekskluzywna Kolekcja Biżuterii"
         desc="Nasz sklep to raj dla miłośników biżuterii, oferujący szeroką i ekskluzywną kolekcję ozdób"
-        class="bg-[#f3f3f3] py-5 sm:py-0 sm:bg-transparent" />
-      <pros link="../../assets/images/monitor.svg" header="Wygodne Zakupy Online"
-        desc="Zapraszamy do wygodnych zakupów online, gdzie w kilka kliknięć możesz znaleźć wymarzoną biżuterię." />
+        class="bg-[#f3f3f3] py-5 sm:py-0 sm:bg-transparent"
+      />
+      <pros
+        link="../../assets/images/monitor.svg"
+        header="Wygodne Zakupy Online"
+        desc="Zapraszamy do wygodnych zakupów online, gdzie w kilka kliknięć możesz znaleźć wymarzoną biżuterię."
+      />
     </div>
   </div>
 
   <div class="flex flex-col justify-center">
-    <div class="recomended flex flex-col gap-y-4 lg:gap-y-8 m-auto h-4/5 w-11/12 max-w-screen-3xl">
+    <div
+      class="recomended flex flex-col gap-y-4 lg:gap-y-8 m-auto h-4/5 w-11/12 max-w-screen-3xl"
+    >
       <div class="top flex gap-x-4 lg:gap-x-8 justify-center h-1/2">
-        <recommended [isLarge]="true" src="../../assets/images/recommended 1.svg" header="Kolczyki"
-          link="/store/earrings" class="w-1/2 lg:w-2/3" />
-        <recommended [isLarge]="false" src="../../assets/images/recommended 2.svg" header="Pierścionki"
-          link="/store/rings" class="w-1/2 lg:w-1/3" />
+        <recommended
+          [isLarge]="true"
+          src="../../assets/images/recommended 1.svg"
+          header="Kolczyki"
+          link="/store/earrings"
+          class="w-1/2 lg:w-2/3"
+        />
+        <recommended
+          [isLarge]="false"
+          src="../../assets/images/recommended 2.svg"
+          header="Pierścionki"
+          link="/store/rings"
+          class="w-1/2 lg:w-1/3"
+        />
       </div>
       <div class="bottom flex gap-x-4 lg:gap-x-8 justify-center h-1/2">
-        <recommended [isLarge]="false" src="../../assets/images/recommended 3.svg" header="Naszyjniki"
-          link="/store/necklaces" class="w-1/2 lg:w-1/3" />
-        <recommended [isLarge]="true" src="../../assets/images/recommended 4.svg" header="Branzoletki"
-          link="/store/bracelets" class="w-1/2 lg:w-2/3" />
+        <recommended
+          [isLarge]="false"
+          src="../../assets/images/recommended 3.svg"
+          header="Naszyjniki"
+          link="/store/necklaces"
+          class="w-1/2 lg:w-1/3"
+        />
+        <recommended
+          [isLarge]="true"
+          src="../../assets/images/recommended 4.svg"
+          header="Branzoletki"
+          link="/store/bracelets"
+          class="w-1/2 lg:w-2/3"
+        />
       </div>
     </div>
   </div>
 
   <div class="presents py-8">
-    <div class="content w-11/12 max-w-screen-3xl m-auto flex flex-col lg:grid grid-cols-3 gap-x-5">
-      <div class="left text-white flex flex-col m-auto gap-y-5 lg:gap-y-10 col-span-1 py-5 lg:py-0">
+    <div
+      class="content w-11/12 max-w-screen-3xl m-auto flex flex-col lg:grid grid-cols-3 gap-x-5"
+    >
+      <div
+        class="left text-white flex flex-col m-auto gap-y-5 lg:gap-y-10 col-span-1 py-5 lg:py-0"
+      >
         <h1 class="text-5xl cinzel text-center lg:text-left">
-          Wybierz <br class="hidden lg:block" />prezent dla <br class="hidden lg:block" />
+          Wybierz <br class="hidden lg:block" />prezent dla
+          <br class="hidden lg:block" />
           bliskich
         </h1>
         <p class="text-xl font-light text-center lg:text-left">
           Znajdź idealne rozwiązanie dla każdej okazji. Odkryj propozycje, które
           z pewnością zachwycą obdarowywaną osobę.
         </p>
-        <button-border link="home" text="Zobacz więcej >" class="hidden lg:block"/>
+        <button-border
+          link="home"
+          text="Zobacz więcej >"
+          class="hidden lg:block"
+        />
       </div>
 
-      <app-present-container class="col-span-2 h-fit my-auto"/>
+      <app-present-container class="col-span-2 h-fit my-auto" />
     </div>
   </div>
 
   <div class="slider">
-    <slider header="BESTSELLERS" />
+    <slider header="BESTSELLERS" [bestsellers]="true" />
   </div>
 
   <div class="instagram m-auto w-11/12 max-w-screen-3xl mb-10">
@@ -75,13 +124,21 @@
       <div class="col-span-2 row-span-2 hidden sm:block">
         <ig-img src="../../assets/images/ig/ig 1.png" />
       </div>
-      <div class="grid grid-rows-2 grid-cols-3 sm:grid-cols-2 xl:grid-cols-3 col-span-3 gap-2">
+      <div
+        class="grid grid-rows-2 grid-cols-3 sm:grid-cols-2 xl:grid-cols-3 col-span-3 gap-2"
+      >
         <ig-img src="../../assets/images/ig/ig 2.png" class="aspect-square" />
         <ig-img src="../../assets/images/ig/ig 3.png" />
         <ig-img src="../../assets/images/ig/ig 4.png" />
         <ig-img src="../../assets/images/ig/ig 5.png" />
-        <ig-img src="../../assets/images/ig/ig 5.png" class="sm:hidden xl:block" />
-        <ig-img src="../../assets/images/ig/ig 5.png" class="sm:hidden xl:block" />
+        <ig-img
+          src="../../assets/images/ig/ig 5.png"
+          class="sm:hidden xl:block"
+        />
+        <ig-img
+          src="../../assets/images/ig/ig 5.png"
+          class="sm:hidden xl:block"
+        />
       </div>
     </div>
   </div>

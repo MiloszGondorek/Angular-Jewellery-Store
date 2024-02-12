@@ -9,6 +9,7 @@
       class="arrow absolute left-0"
       [ngStyle]="{ 'top.px': topPx }"
       (click)="moveRight()"
+      *ngIf="showArrows"
     />
     <div class="flex gap-x-5 overflow-x-clip bg-red" #containerElement>
       <div
@@ -18,9 +19,12 @@
       >
         <item
           src="../../assets/images/items/item 1.png"
-          name="Nazwa"
           class="w-full"
-          [price]="2"
+          [name]="item.getName()"
+          [price]="item.getPrice()"
+          [src]="item.getSrc()"
+          [id]="item.getId()"
+          (childCreated)="setElement($event)"
         />
       </div>
     </div>
@@ -30,6 +34,7 @@
       class="arrow absolute right-0"
       [ngStyle]="{ 'top.px': topPx }"
       (click)="moveLeft()"
+      *ngIf="showArrows"
     />
   </div>
 </div>

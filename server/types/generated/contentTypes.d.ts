@@ -781,6 +781,40 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
   };
 }
 
+export interface ApiBestsellerBestseller extends Schema.SingleType {
+  collectionName: 'bestsellers';
+  info: {
+    singularName: 'bestseller';
+    pluralName: 'bestsellers';
+    displayName: 'Bestseller';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    items: Attribute.Relation<
+      'api::bestseller.bestseller',
+      'oneToMany',
+      'api::item.item'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::bestseller.bestseller',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::bestseller.bestseller',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiCategoryCategory extends Schema.CollectionType {
   collectionName: 'categories';
   info: {
@@ -919,6 +953,7 @@ declare module '@strapi/types' {
       'plugin::users-permissions.permission': PluginUsersPermissionsPermission;
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
+      'api::bestseller.bestseller': ApiBestsellerBestseller;
       'api::category.category': ApiCategoryCategory;
       'api::collection.collection': ApiCollectionCollection;
       'api::item.item': ApiItemItem;
