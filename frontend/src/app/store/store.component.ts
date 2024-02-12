@@ -33,9 +33,8 @@ export class StoreComponent implements OnInit {
   }
 
   async getData(id: any) {
-    console.log(id);
     const data = await http.getData(
-      `items?populate=*&filters[category][Name][$eq]=${id}`
+      `items?populate[0]=MainImage&filters[category][Name][$eq]=${id}`
     );
     data.forEach((element: any, index: any) => {
       const imgUrl =

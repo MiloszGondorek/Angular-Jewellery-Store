@@ -46,22 +46,24 @@ export class SliderComponent implements OnInit, AfterViewChecked {
   ngAfterViewChecked() {
     this.setButtonMt();
   }
-
-  async generate() {
-    const data = await http.getData(
-      `items?populate=*&filters[category][Name][$eq]=rings`
-    );
-
-    data.forEach((element: any) => {
-      const imgUrl =
-        http.getURL() + element.attributes.MainImage.data.attributes.url;
-      const title = element.attributes.Name;
-      const price = element.attributes.Price;
-      const id = element.id;
-      const newItem = new Item(title, imgUrl, price, id);
-      this.items.push(newItem);
-    });
+  async getItem(itemId: any) {
+    const data: any = await http.getData(`items/${itemId}?populate=*`);
+    const imgUrl =
+      http.getURL() + data.attributes.MainImage.data.attributes.url;
+    const title = data.attributes.Name;
+    const price = data.attributes.Price;
+    const id = data.id;
+    const newItem = new Item(title, imgUrl, price, id);
+    this.items.push(newItem);
     this.checkRowCount();
+  }
+  async generate() {
+    const data: any = await http.getData(`bestseller?populate=*`);
+
+    data.attributes.items.data.forEach((element: any) => {
+      const item = element.id;
+      this.getItem(item);
+    });
   }
 
   currentX = 0;
