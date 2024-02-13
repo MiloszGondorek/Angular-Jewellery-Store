@@ -1,0 +1,86 @@
+{
+  "data": {
+    "id": 1,
+    "attributes": {
+      "Name": "Luna Diamentów",
+      "Price": 350,
+      "Description": "Złoty pierścień z naszej kolekcji to nie tylko biżuteria, to prawdziwy symbol elegancji i klasy. Wykonany ze złota najwyższej jakości, ten wyjątkowy pierścień emanuje subtelnym blaskiem, który podkreśla Twoją wyrafinowaną estetykę. Złocone piękno tego pierścienia sprawia, że staje się on nie tylko ozdobą, ale także wyrazem Twojego niepowtarzalnego stylu i luksusu. Dla tych, którzy pragną nosić ze sobą nie tylko biżuterię, ale także wyjątkowy fragment szlachetnego piękna.\nZłoty pierścień z naszej ekskluzywnej kolekcji to doskonałe połączenie tradycji złotnictwa i nowoczesnego designu. Wyjątkowy błysk i ciepło złota najwyższej jakości dodają temu pierścieniowi niepowtarzalnej elegancji, czyniąc go nie tylko ozdobą, lecz także symbolem wyrafinowanego luksusu.\nJego subtelna konstrukcja idealnie otula palce, a precyzyjne zdobienia tworzą delikatny, lecz niezapomniany efekt wizualny. To nie tylko biżuteria, ale także wyrażenie Twojego niepowtarzalnego stylu i wyjątkowości. Każdy noszony pierścień jest wyjątkowym akcentem, który podkreśla Twoją osobowość, sprawiając, że każda chwila staje się niezwykła. Złoty pierścień z naszej kolekcji to więcej niż tylko ozdoba – to wyjątkowy fragment szlachetnego piękna, który towarzyszy Ci z klasą i wdziękiem.",
+      "createdAt": "2024-02-07T13:55:23.828Z",
+      "updatedAt": "2024-02-09T01:04:53.505Z",
+      "publishedAt": "2024-02-07T13:56:40.737Z",
+      "Details": "Kruszec: złoto\nPróba: 925\nZapięcie typu: bigiel\nZdobienie: bezbarwne cyrkonie\nŚrednia gramatura: poniżej 5g",
+      "MainImage": {
+        "data": {
+          "id": 7,
+          "attributes": {
+            "name": "item 1.png",
+            "alternativeText": null,
+            "caption": null,
+            "width": 666,
+            "height": 471,
+            "formats": {
+              "thumbnail": {
+                "name": "thumbnail_item 1.png",
+                "hash": "thumbnail_item_1_1049144ce4",
+                "ext": ".png",
+                "mime": "image/png",
+                "path": null,
+                "width": 221,
+                "height": 156,
+                "size": 42.53,
+                "url": "/uploads/thumbnail_item_1_1049144ce4.png"
+              },
+              "small": {
+                "name": "small_item 1.png",
+                "hash": "small_item_1_1049144ce4",
+                "ext": ".png",
+                "mime": "image/png",
+                "path": null,
+                "width": 500,
+                "height": 354,
+                "size": 201.4,
+                "url": "/uploads/small_item_1_1049144ce4.png"
+              }
+            },
+            "hash": "item_1_1049144ce4",
+            "ext": ".png",
+            "mime": "image/png",
+            "size": 105.1,
+            "url": "/uploads/item_1_1049144ce4.png",
+            "previewUrl": null,
+            "provider": "local",
+            "provider_metadata": null,
+            "createdAt": "2024-02-07T13:54:46.840Z",
+            "updatedAt": "2024-02-07T13:54:46.840Z"
+          }
+        }
+      },
+      "Images": { "data": null },
+      "category": {
+        "data": {
+          "id": 2,
+          "attributes": {
+            "Name": "rings",
+            "Description": null,
+            "createdAt": "2024-02-07T13:56:09.900Z",
+            "updatedAt": "2024-02-07T13:56:09.900Z",
+            "publishedAt": "2024-02-07T14:11:55.143Z"
+          }
+        }
+      },
+      "collection": {
+        "data": {
+          "id": 1,
+          "attributes": {
+            "Title": "Elegancja Natury",
+            "Description": "Kolekcja inspirowana pięknem natury, gdzie delikatne formy i precyzyjne zdobienia odzwierciedlają subtelność otaczającego świata, tworząc biżuterię pełną wdzięku.",
+            "createdAt": "2024-02-05T21:48:08.685Z",
+            "updatedAt": "2024-02-05T21:48:10.372Z",
+            "publishedAt": "2024-02-05T21:48:10.365Z"
+          }
+        }
+      }
+    }
+  },
+  "meta": {}
+}

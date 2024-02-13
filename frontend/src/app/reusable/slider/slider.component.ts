@@ -13,6 +13,7 @@ import {
 import { http } from '../../../httpConnection';
 import { CommonModule } from '@angular/common';
 import { Item, ItemComponent } from '../item/item.component';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'slider',
@@ -26,7 +27,11 @@ export class SliderComponent implements OnInit, AfterViewChecked {
   @Input() theme = 'light';
   @Input() bestsellers = false;
 
-  constructor(private cdr: ChangeDetectorRef) {}
+  constructor(
+    private cdr: ChangeDetectorRef,
+    private route: ActivatedRoute,
+    private router: Router
+  ) {}
   @ViewChildren('child') childs!: QueryList<ElementRef>;
 
   topPx: number | undefined;
@@ -35,17 +40,18 @@ export class SliderComponent implements OnInit, AfterViewChecked {
 
   ngOnInit(): void {
     if (this.bestsellers) {
-      this.generate();
+      this.generateBestsellers();
     } else {
-      for (var i = 0; i < 12; i++) {
-        const newItem = new Item(i.toString(), 'asd', 1, 1);
-        this.items.push(newItem);
-      }
+      this.route.params.subscribe((params) => {
+        const id = params['id'];
+        this.generateRelative(id);
+      });
     }
   }
   ngAfterViewChecked() {
     this.setButtonMt();
   }
+
   async getItem(itemId: any) {
     const data: any = await http.getData(`items/${itemId}?populate=*`);
     const imgUrl =
@@ -57,7 +63,8 @@ export class SliderComponent implements OnInit, AfterViewChecked {
     this.items.push(newItem);
     this.checkRowCount();
   }
-  async generate() {
+
+  async generateBestsellers() {
     const data: any = await http.getData(`bestseller?populate=*`);
 
     data.attributes.items.data.forEach((element: any) => {
@@ -66,6 +73,44 @@ export class SliderComponent implements OnInit, AfterViewChecked {
     });
   }
 
+  async generateRelative(id: any) {
+    //items?populate=*&filters[collection][id][$ne]=1&filters[category][id]=1 zapytanie o itemy z kolekcji
+    const data: any = await http.getData(`items/${id}?populate=*`);
+    const collection = data.attributes.collection.data;
+
+    let itemsInList = 0;
+    let itemsIds: any = [];
+    const itemLimit = 10;
+
+    if (collection !== null) {
+      const itemInCollection: any = await http.getData(
+        `items?populate=*&filters[collection][id]=${collection.id}&filters[id][$ne]=${id}`
+      );
+      itemInCollection.forEach((element: any) => {
+        const itemId = element.id;
+        this.getItem(itemId);
+        itemsIds.push(itemId);
+        itemsInList++;
+      });
+    } else {
+      console.log('NIE MA KOLEKCJI');
+    }
+    if (itemsInList < itemLimit) {
+      const category = data.attributes.category.data;
+      const itemsInCategory: any = await http.getData(
+        `items?populate=*&filters[category][id]=${category.id}&filters[id][$ne]=${id}`
+      );
+      console.log(itemsInCategory);
+      for (let item of itemsInCategory) {
+        const itemId = item.id;
+        if (!itemsIds.includes(itemId)) {
+          this.getItem(itemId);
+          itemsInList++;
+        }
+        if (itemsInList >= itemLimit) break;
+      }
+    }
+  }
   currentX = 0;
   elementsInRow = 5;
 
