@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_reusable_sizes",
+  "info": {
+    "displayName": "Size"
+  },
+  "options": {},
+  "attributes": {
+    "Size": {
+      "type": "string",
+      "required": true,
+      "minLength": 1
+    },
+    "isAvaible": {
+      "type": "boolean",
+      "default": true,
+      "required": true
+    }
+  }
+}

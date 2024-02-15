@@ -1,10 +1,16 @@
 <a href="{{ link }}" *ngIf="link != ''; else clickable">
-  <button class="px-8 py-2" [ngClass]="{ full: isFull, 'w-full': fullWidth }">
+  <button
+    class="px-8 py-2 h-full"
+    [ngClass]="{ full: isFull, 'w-full': fullWidth }"
+  >
     {{ text }}
   </button>
 </a>
 <ng-template #clickable>
-  <button class="px-8 py-2" [ngClass]="{ full: isFull, 'w-full': fullWidth }">
+  <button
+    class="px-8 py-2 h-full"
+    [ngClass]="{ full: isFull, 'w-full': fullWidth }"
+  >
     {{ text }}
   </button>
 </ng-template>

@@ -61,6 +61,11 @@
     },
     "Details": {
       "type": "text"
+    },
+    "Size": {
+      "type": "component",
+      "repeatable": true,
+      "component": "reusable.size"
     }
   }
 }

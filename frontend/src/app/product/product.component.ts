@@ -5,6 +5,7 @@ import {
   HostListener,
   QueryList,
   ViewChildren,
+  ViewChild,
 } from '@angular/core';
 import { SliderComponent } from '../reusable/slider/slider.component';
 import { LinkComponent } from './link/link.component';
@@ -39,6 +40,7 @@ export class ProductComponent implements OnInit {
   name = '';
   description: any = [];
   details: any = [];
+  sizes: any = [];
   price = 0;
   mainSrc = '';
   showArrows = false;
@@ -46,6 +48,8 @@ export class ProductComponent implements OnInit {
   src: any = [];
 
   @ViewChildren('child') childs!: QueryList<ElementRef>;
+
+  @ViewChild('appSelect') appSelect!: SelectComponent;
 
   currentX = 0;
   elementsInRow = 3;
@@ -68,15 +72,15 @@ export class ProductComponent implements OnInit {
 
   async getData() {
     const request = `items/${this.id}?populate=*`;
-    const d: any = await http.getData(request);
-    if (Object.keys(d).length > 0) {
-      this.price = d.attributes.Price;
-      this.name = d.attributes.Name;
-      const des: string = d.attributes.Description;
+    const data: any = await http.getData(request);
+    if (Object.keys(data).length > 0) {
+      this.price = data.attributes.Price;
+      this.name = data.attributes.Name;
+      const des: string = data.attributes.Description;
       const serverURL = http.getURL();
-      this.src.push(serverURL + d.attributes.MainImage.data.attributes.url);
+      this.src.push(serverURL + data.attributes.MainImage.data.attributes.url);
 
-      const images = d.attributes.Images.data;
+      const images = data.attributes.Images.data;
       if (images !== null) {
         for (let url of images) {
           this.src.push(serverURL + url.attributes.url);
@@ -88,11 +92,17 @@ export class ProductComponent implements OnInit {
       if (des !== null) {
         this.description = des.split('\n');
       }
-      const det: string = d.attributes.Details;
+      const det: string = data.attributes.Details;
       if (det !== null) {
         this.details = det.split('\n');
       }
       this.mainSrc = this.src[0];
+
+      const sizes: any = data.attributes.Size;
+      sizes.forEach((size: any) => {
+        this.sizes.push(size.Size);
+        //this.selectChild.doSomething();
+      });
     } else {
       this.router.navigateByUrl('/404');
     }

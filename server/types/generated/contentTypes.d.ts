@@ -925,6 +925,7 @@ export interface ApiItemItem extends Schema.CollectionType {
       'api::collection.collection'
     >;
     Details: Attribute.Text;
+    Size: Attribute.Component<'reusable.size', true>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

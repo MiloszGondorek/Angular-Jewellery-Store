@@ -95,17 +95,25 @@
         </p>
       </div>
       <div class="mt-5 lg:mt-0">
-        <div class="w-full lg:w-1/2 min-w-52 mb-3">
-          <app-select header="Size" />
+        <div class="w-full lg:w-1/2 min-w-52 mb-3" *ngIf="sizes.length > 0">
+          <app-select header="Size" [options]="sizes" #appSelect />
         </div>
         <div class="flex gap-3 flex-col sm:flex-row">
-          <div class="w-full sm:w-max">
-            <app-count />
+          <div class="w-full bg-red-500 flex flex-col">
+            <button-border
+              class="h-full text-xl"
+              text="Dodaj do koszyka"
+              [isFull]="true"
+              [fullWidth]="true"
+            />
           </div>
-          <div class="w-full">
-            <button-border text="Dodaj do koszyka" [fullWidth]="true" />
+          <div class="border-[#E3A74D] border-[1px] px-4 py-2 cursor-pointer">
+            <img
+              src="../../assets/images/hearth.svg"
+              alt=""
+              class="w-auto h-auto block"
+            />
           </div>
-          <app-count />
         </div>
       </div>
     </div>

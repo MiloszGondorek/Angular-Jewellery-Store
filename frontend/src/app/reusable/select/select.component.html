@@ -6,7 +6,10 @@
     </div>
     <img src="../../../assets/images/arrow-down.svg" alt="" draggable="false" />
   </div>
-  <div class="options absolute w-full bg-white z-10" *ngIf="showOptions">
+  <div
+    class="options absolute w-full bg-white z-10 max-h-[300px] overflow-y-scroll"
+    *ngIf="showOptions"
+  >
     <div *ngFor="let l of options">
       <p class="px-5 py-3 hover:bg-slate-100" (click)="changeOption(l)">
         {{ l }}
