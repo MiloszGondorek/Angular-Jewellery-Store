@@ -41,15 +41,9 @@ export class ProductComponent implements OnInit {
   details: any = [];
   price = 0;
   mainSrc = '';
+  showArrows = false;
 
-  src = [
-    '../../assets/images/items/item 1.png',
-    '../../assets/images/about 1.png',
-    '.../../assets/images/about 2.png',
-    '../../assets/images/about 3.png',
-    '../../assets/images/Main.png',
-    '../../assets/images/present 1.png',
-  ];
+  src: any = [];
 
   @ViewChildren('child') childs!: QueryList<ElementRef>;
 
@@ -73,12 +67,24 @@ export class ProductComponent implements OnInit {
   }
 
   async getData() {
-    const request = `items/${this.id}`;
+    const request = `items/${this.id}?populate=*`;
     const d: any = await http.getData(request);
     if (Object.keys(d).length > 0) {
       this.price = d.attributes.Price;
       this.name = d.attributes.Name;
       const des: string = d.attributes.Description;
+      const serverURL = http.getURL();
+      this.src.push(serverURL + d.attributes.MainImage.data.attributes.url);
+
+      const images = d.attributes.Images.data;
+      if (images !== null) {
+        for (let url of images) {
+          this.src.push(serverURL + url.attributes.url);
+          if (this.src.length > 3) {
+            this.showArrows = true;
+          }
+        }
+      }
       if (des !== null) {
         this.description = des.split('\n');
       }

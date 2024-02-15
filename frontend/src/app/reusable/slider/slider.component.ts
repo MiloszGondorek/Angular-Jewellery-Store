@@ -74,7 +74,6 @@ export class SliderComponent implements OnInit, AfterViewChecked {
   }
 
   async generateRelative(id: any) {
-    //items?populate=*&filters[collection][id][$ne]=1&filters[category][id]=1 zapytanie o itemy z kolekcji
     const data: any = await http.getData(`items/${id}?populate=*`);
     const collection = data.attributes.collection.data;
 
@@ -92,15 +91,12 @@ export class SliderComponent implements OnInit, AfterViewChecked {
         itemsIds.push(itemId);
         itemsInList++;
       });
-    } else {
-      console.log('NIE MA KOLEKCJI');
     }
     if (itemsInList < itemLimit) {
       const category = data.attributes.category.data;
       const itemsInCategory: any = await http.getData(
         `items?populate=*&filters[category][id]=${category.id}&filters[id][$ne]=${id}`
       );
-      console.log(itemsInCategory);
       for (let item of itemsInCategory) {
         const itemId = item.id;
         if (!itemsIds.includes(itemId)) {
