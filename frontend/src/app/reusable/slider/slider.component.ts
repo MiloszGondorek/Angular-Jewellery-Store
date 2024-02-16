@@ -59,7 +59,7 @@ export class SliderComponent implements OnInit, AfterViewChecked {
     const title = data.attributes.Name;
     const price = data.attributes.Price;
     const id = data.id;
-    const newItem = new Item(title, imgUrl, price, id);
+    const newItem = new Item(title, price, id, imgUrl);
     this.items.push(newItem);
     this.checkRowCount();
   }

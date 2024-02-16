@@ -1,1 +1,40 @@
-<p>basket works!</p>
+<div
+  class="flex flex-col lg:flex-row w-11/12 max-w-[600px] lg:max-w-[1200px] xl:min-w-[1000px] m-auto gap-12 justify-between my-10"
+>
+  <div class="flex flex-col xl:max-w-[600px] w-full m-auto">
+    <h1 class="text-xl font-semibold">Koszyk (Ilość: {{ items.length }})</h1>
+    <div class="h-px w-full bg-black mb-4 mt-2"></div>
+    <div class="flex flex-col gap-10">
+      <item-info *ngFor="let item of items" [item]="item" />
+    </div>
+  </div>
+  <div class="w-full lg:max-w-[400px]">
+    <div
+      class="flex flex-col gap-5 sticky top-20 bg-[#F3F3F3] px-8 py-5 w-full"
+    >
+      <h1 class="text-center text-xl font-medium">Podsumowanie zamówienia</h1>
+      <div class="h-px w-full bg-black"></div>
+      <div>
+        <div class="flex justify-between">
+          <p>Podsumowanie (Ilość: 1)</p>
+          <p>350 PLN</p>
+        </div>
+        <div class="flex justify-between">
+          <p>Dostawa</p>
+          <p>17 PLN</p>
+        </div>
+      </div>
+      <div class="h-px w-full bg-black"></div>
+      <div class="flex justify-between">
+        <p>Łącznie</p>
+        <p>367 PLN</p>
+      </div>
+      <div class="h-px w-full bg-black"></div>
+      <button-border
+        text="Przejdź do kasy"
+        [isFull]="true"
+        [fullWidth]="true"
+      />
+    </div>
+  </div>
+</div>

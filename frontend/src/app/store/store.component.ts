@@ -42,7 +42,7 @@ export class StoreComponent implements OnInit {
       const title = element.attributes.Name;
       const price = element.attributes.Price;
       const id = element.id;
-      const newItem = new Item(title, imgUrl, price, id);
+      const newItem = new Item(title, price, id, imgUrl);
       this.items.push(newItem);
     });
   }

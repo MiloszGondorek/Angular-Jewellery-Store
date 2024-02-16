@@ -6,6 +6,7 @@ import {
   QueryList,
   ViewChildren,
   ViewChild,
+  AfterViewChecked,
 } from '@angular/core';
 import { SliderComponent } from '../reusable/slider/slider.component';
 import { LinkComponent } from './link/link.component';
@@ -17,6 +18,8 @@ import { CommonModule } from '@angular/common';
 import { http } from '../../httpConnection';
 import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
+import { Storage } from '../../storage';
+import { Item } from '../reusable/item/item.component';
 
 @Component({
   selector: 'app-product',
@@ -44,6 +47,7 @@ export class ProductComponent implements OnInit {
   price = 0;
   mainSrc = '';
   showArrows = false;
+  isFav = false;
 
   src: any = [];
 
@@ -54,6 +58,33 @@ export class ProductComponent implements OnInit {
   currentX = 0;
   elementsInRow = 3;
   orientationHorizontal = false;
+  isInFav() {
+    const jsonData = Storage.getData('fav');
+    const data = JSON.parse(jsonData);
+    return data.findIndex((i: any) => i == this.id) != -1;
+  }
+  addToFav() {
+    const jsonData = Storage.getData('fav');
+    let items: number[] = [];
+    const data = JSON.parse(jsonData);
+    data.forEach((id: any) => {
+      items.push(id);
+    });
+    let searchId = items.findIndex((i) => i == this.id);
+    if (searchId == undefined) searchId = -1;
+    if (searchId > -1) {
+      items.splice(searchId, 1);
+    } else {
+      items.push(this.id);
+    }
+    const json = JSON.stringify(items);
+    Storage.setData('fav', json);
+    this.checkFav();
+  }
+
+  checkFav() {
+    this.isFav = this.isInFav();
+  }
 
   ngOnInit(): void {
     this.route.params.subscribe((params) => {
@@ -69,7 +100,6 @@ export class ProductComponent implements OnInit {
     }
     this.getData();
   }
-
   async getData() {
     const request = `items/${this.id}?populate=*`;
     const data: any = await http.getData(request);
@@ -101,11 +131,11 @@ export class ProductComponent implements OnInit {
       const sizes: any = data.attributes.Size;
       sizes.forEach((size: any) => {
         this.sizes.push(size.Size);
-        //this.selectChild.doSomething();
       });
     } else {
       this.router.navigateByUrl('/404');
     }
+    this.checkFav();
   }
 
   moveDown() {

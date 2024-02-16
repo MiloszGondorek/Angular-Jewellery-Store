@@ -6,7 +6,6 @@ import {
   AfterViewInit,
   Output,
   EventEmitter,
-  AfterContentInit,
 } from '@angular/core';
 
 @Component({
@@ -32,17 +31,21 @@ export class ItemComponent implements AfterViewInit {
 }
 
 export class Item {
-  name: string = '';
-  src: string = '';
-  price: number = 0;
-  id: number = 0;
+  private name: string = '';
+  private src!: string;
+  private price: number = 0;
+  private id: number = 0;
 
-  constructor(num: string, src: string, price: number, id: number) {
-    this.name = num;
-    this.src = src;
+  constructor(name: string, price: number, id: number, src?: string) {
+    this.name = name;
     this.price = price;
     this.id = id;
+
+    if (src) {
+      this.src = src;
+    }
   }
+
   getName() {
     return this.name;
   }

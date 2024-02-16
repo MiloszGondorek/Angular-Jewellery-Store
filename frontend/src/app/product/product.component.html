@@ -99,7 +99,7 @@
           <app-select header="Size" [options]="sizes" #appSelect />
         </div>
         <div class="flex gap-3 flex-col sm:flex-row">
-          <div class="w-full bg-red-500 flex flex-col">
+          <div class="w-full flex flex-col">
             <button-border
               class="h-full text-xl"
               text="Dodaj do koszyka"
@@ -107,11 +107,15 @@
               [fullWidth]="true"
             />
           </div>
-          <div class="border-[#E3A74D] border-[1px] px-4 py-2 cursor-pointer">
+          <div
+            class="border-[#E3A74D] border-[1px] px-4 py-2 cursor-pointer"
+            [ngClass]="{ 'bg-red-500': isFav }"
+          >
             <img
               src="../../assets/images/hearth.svg"
               alt=""
               class="w-auto h-auto block"
+              (click)="addToFav()"
             />
           </div>
         </div>
@@ -123,7 +127,7 @@
   <slider header="Podobne produkty" theme="dark" />
 </div>
 <div #desc class="w-11/12 m-auto max-w-screen-2xl flex flex-col gap-y-5 mb-8">
-  <h1 class="text-2xl">O produkcie</h1>
+  <h1 class="text-2xl font-medium">O produkcie</h1>
   <p *ngFor="let paragraph of description">
     {{ paragraph }}
   </p>

@@ -1,1 +1,30 @@
-<p>item-info works!</p>
+<div class="w-full flex gap-4">
+  <div
+    class="max-w-[250px] min-w-[150px] w-[20vw] aspect-square relative flex justify-center"
+  >
+    <img
+      src="../../../assets/images/recommended-bg.svg"
+      alt=""
+      class="absolute -z-10 left-0 top-0 w-full h-full"
+    />
+    <img
+      src="{{ src }}"
+      alt=""
+      class="block w-4/5 h-4/5 m-auto object-contain"
+    />
+  </div>
+  <div class="flex justify-between w-full">
+    <div class="flex flex-col justify-between">
+      <h1 class="text-xl font-medium">{{ name }}</h1>
+      <div>
+        <p>ID: {{ id }}</p>
+        <p>Rozmiar: 16cm</p>
+        <p>Metal: Srebro</p>
+      </div>
+    </div>
+    <div class="flex flex-col justify-between">
+      <p class="text-xl font-medium">{{ price }} PLN</p>
+      <p class="w-fit ml-auto cursor-pointer select-none">Usuń</p>
+    </div>
+  </div>
+</div>
