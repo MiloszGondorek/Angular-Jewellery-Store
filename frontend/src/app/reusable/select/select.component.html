@@ -11,8 +11,8 @@
     *ngIf="showOptions"
   >
     <div *ngFor="let l of options">
-      <p class="px-5 py-3 hover:bg-slate-100" (click)="changeOption(l)">
-        {{ l }}
+      <p class="px-5 py-3 hover:bg-slate-100" (click)="changeOption(l.getId())">
+        {{ l.getName() }}
       </p>
     </div>
   </div>

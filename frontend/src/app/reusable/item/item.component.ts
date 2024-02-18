@@ -35,14 +35,29 @@ export class Item {
   private src!: string;
   private price: number = 0;
   private id: number = 0;
+  private metal: string = '';
+  private collection: string = '';
 
-  constructor(name: string, price: number, id: number, src?: string) {
+  constructor(
+    name: string,
+    price: number,
+    id: number,
+    src?: string,
+    metal?: string,
+    collection?: string
+  ) {
     this.name = name;
     this.price = price;
     this.id = id;
 
     if (src) {
       this.src = src;
+    }
+    if (metal) {
+      this.metal = metal;
+    }
+    if (collection) {
+      this.collection = collection;
     }
   }
 
@@ -57,5 +72,11 @@ export class Item {
   }
   getId() {
     return this.id;
+  }
+  getMetal() {
+    return this.metal;
+  }
+  getCollection() {
+    return this.collection;
   }
 }

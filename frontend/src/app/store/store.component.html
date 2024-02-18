@@ -18,23 +18,25 @@
 
 <div class="w-4/5 mx-auto flex flex-col md:flex-row my-8 gap-x-10">
   <div class="filter min-w-64 relative mb-5 md:mb-0 md:sticky md:top-28 h-fit">
-    <app-select />
-    <filter header="Metal" [filter]="['Srebro', 'Złoto']" />
+    <app-select [options]="sortData" (sendId)="sortItems($event)" />
+    <filter
+      header="Metal"
+      [filter]="metals"
+      (add)="addMetal($event)"
+      (remove)="removeMetal($event)"
+    />
     <filter
       header="Kolekcja"
-      [filter]="[
-        'Eteryczna Harmonia',
-        'Majestatyczne Opale',
-        'Lustrzane Refleksje',
-        'Złoty Rytuał'
-      ]"
+      [filter]="collections"
+      (add)="addCollection($event)"
+      (remove)="removeCollection($event)"
     />
   </div>
   <div
     class="w-auto items grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 ml-auto gap-5"
   >
     <item
-      *ngFor="let item of items"
+      *ngFor="let item of visibleItems"
       [name]="item.getName()"
       [price]="item.getPrice()"
       [src]="item.getSrc()"

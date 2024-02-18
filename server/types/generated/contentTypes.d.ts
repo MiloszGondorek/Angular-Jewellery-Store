@@ -926,12 +926,52 @@ export interface ApiItemItem extends Schema.CollectionType {
     >;
     Details: Attribute.Text;
     Size: Attribute.Component<'reusable.size', true>;
+    metal: Attribute.Relation<
+      'api::item.item',
+      'manyToOne',
+      'api::metal.metal'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<'api::item.item', 'oneToOne', 'admin::user'> &
       Attribute.Private;
     updatedBy: Attribute.Relation<'api::item.item', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+  };
+}
+
+export interface ApiMetalMetal extends Schema.CollectionType {
+  collectionName: 'metals';
+  info: {
+    singularName: 'metal';
+    pluralName: 'metals';
+    displayName: 'Metal';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    Name: Attribute.String & Attribute.Required & Attribute.Unique;
+    items: Attribute.Relation<
+      'api::metal.metal',
+      'oneToMany',
+      'api::item.item'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::metal.metal',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::metal.metal',
+      'oneToOne',
+      'admin::user'
+    > &
       Attribute.Private;
   };
 }
@@ -958,6 +998,7 @@ declare module '@strapi/types' {
       'api::category.category': ApiCategoryCategory;
       'api::collection.collection': ApiCollectionCollection;
       'api::item.item': ApiItemItem;
+      'api::metal.metal': ApiMetalMetal;
     }
   }
 }

@@ -66,6 +66,12 @@
       "type": "component",
       "repeatable": true,
       "component": "reusable.size"
+    },
+    "metal": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::metal.metal",
+      "inversedBy": "items"
     }
   }
 }
