@@ -18,13 +18,18 @@
       <h1 class="text-xl font-medium">{{ name }}</h1>
       <div>
         <p>ID: {{ id }}</p>
-        <p>Rozmiar: 16cm</p>
-        <p>Metal: Srebro</p>
+        <p *ngIf="size != ''">Rozmiar: {{ size }} cm</p>
+        <p>Metal: {{ metal }}</p>
       </div>
     </div>
     <div class="flex flex-col justify-between">
       <p class="text-xl font-medium">{{ price }} PLN</p>
-      <p class="w-fit ml-auto cursor-pointer select-none">Usuń</p>
+      <p
+        class="w-fit ml-auto cursor-pointer select-none"
+        (click)="removeItem.emit(id)"
+      >
+        Usuń
+      </p>
     </div>
   </div>
 </div>

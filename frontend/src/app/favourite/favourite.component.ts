@@ -45,7 +45,8 @@ export class FavouriteComponent {
       const name = data.attributes.Name;
       const serverURL = http.getURL();
       const src = serverURL + data.attributes.MainImage.data.attributes.url;
-      const newItem = new Item(name, price, id, src);
+      const metal = data.attributes.metal.data.attributes.Name;
+      const newItem = new Item(name, price, id, src, metal);
       this.items.push(newItem);
     }
   }

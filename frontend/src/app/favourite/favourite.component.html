@@ -5,7 +5,7 @@
     <item-info
       *ngFor="let item of items"
       [item]="item"
-      (click)="removeFromFav(item.getId())"
+      (removeItem)="removeFromFav($event)"
     />
   </div>
 </div>

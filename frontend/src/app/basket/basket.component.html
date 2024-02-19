@@ -5,7 +5,11 @@
     <h1 class="text-xl font-semibold">Koszyk (Ilość: {{ items.length }})</h1>
     <div class="h-px w-full bg-black mb-4 mt-2"></div>
     <div class="flex flex-col gap-10">
-      <item-info *ngFor="let item of items" [item]="item" />
+      <item-info
+        *ngFor="let item of items"
+        [item]="item.item"
+        (removeItem)="removeItem(item.id)"
+      />
     </div>
   </div>
   <div class="w-full lg:max-w-[400px]">

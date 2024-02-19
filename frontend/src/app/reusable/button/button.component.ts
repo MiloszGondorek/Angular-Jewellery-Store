@@ -13,4 +13,5 @@ export class ButtonComponent {
   @Input() link = '';
   @Input() isFull = false;
   @Input() fullWidth = false;
+  @Input() canHover=true;
 }

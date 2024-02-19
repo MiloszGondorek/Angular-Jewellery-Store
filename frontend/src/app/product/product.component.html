@@ -96,26 +96,37 @@
       </div>
       <div class="mt-5 lg:mt-0">
         <div class="w-full lg:w-1/2 min-w-52 mb-3" *ngIf="sizes.length > 0">
-          <app-select header="Size" [options]="sizes" #appSelect />
+          <app-select
+            header="Size"
+            [options]="sizes"
+            (sendId)="setSizeId($event)"
+            #appSelect
+          />
         </div>
         <div class="flex gap-3 flex-col sm:flex-row">
-          <div class="w-full flex flex-col">
+          <div
+            class="w-full flex flex-col"
+            (click)="addToBasket()"
+            (mouseleave)="setCanClick(true)"
+          >
             <button-border
               class="h-full text-xl"
-              text="Dodaj do koszyka"
-              [isFull]="true"
+              [text]="buttonVal"
+              [isFull]="canClick"
               [fullWidth]="true"
+              [canHover]="false"
             />
           </div>
           <div
             class="border-[#E3A74D] border-[1px] px-4 py-2 cursor-pointer"
             [ngClass]="{ 'bg-red-500': isFav }"
+            (click)="addToFav()"
           >
             <img
               src="../../assets/images/hearth.svg"
               alt=""
-              class="w-auto h-auto block"
-              (click)="addToFav()"
+              class="w-auto h-auto block select-none"
+              draggable="false"
             />
           </div>
         </div>

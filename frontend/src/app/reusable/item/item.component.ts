@@ -37,6 +37,7 @@ export class Item {
   private id: number = 0;
   private metal: string = '';
   private collection: string = '';
+  private size: string = '';
 
   constructor(
     name: string,
@@ -59,6 +60,14 @@ export class Item {
     if (collection) {
       this.collection = collection;
     }
+  }
+
+  setSize(size: string) {
+    this.size = size;
+  }
+
+  getSize() {
+    return this.size;
   }
 
   getName() {
