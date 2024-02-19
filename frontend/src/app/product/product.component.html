@@ -1,7 +1,4 @@
-<div class="w-11/12 m-auto max-w-screen-2xl">
-  <div class="my-5">
-    <app-link [href]="['Biżuteria', 'Pierścionki', name]" />
-  </div>
+<div class="w-11/12 m-auto max-w-screen-2xl mt-5">
   <div
     class="max-w-[650px] min-h-[400px] lg:max-w-none mx-auto xl:max-w-none flex xl:grid grid-cols-2 gap-5 flex-col-reverse lg:flex-row"
   >
@@ -42,7 +39,7 @@
           />
         </div>
         <div
-          class="relative aspect-square h-fit w-1 min-w-[calc((100%-2.5rem)/3)] xl:w-full xl:min-w-fit xl:h-1 xl:min-h-[calc((100%-2.5rem)/3)] itemImg"
+          class="relative aspect-square h-fit w-1 min-w-[calc((100%-2.5rem)/3)] xl:w-full xl:min-w-fit xl:h-1 xl:min-h-[calc((100%-2.5rem)/3)] itemImg cursor-pointer"
           *ngFor="let item of src"
           #child
           [ngClass]="{ border: item == mainSrc }"
@@ -118,8 +115,8 @@
             />
           </div>
           <div
-            class="border-[#E3A74D] border-[1px] px-4 py-2 cursor-pointer"
-            [ngClass]="{ 'bg-red-500': isFav }"
+            class="border-[#E3A74D] border-[1px] px-4 py-2 cursor-pointer hearth relative"
+            [ngClass]="{ 'bg-[#E3A74D]': isFav }"
             (click)="addToFav()"
           >
             <img
@@ -127,6 +124,14 @@
               alt=""
               class="w-auto h-auto block select-none"
               draggable="false"
+              [ngClass]="{ 'opacity-0': isFav }"
+            />
+            <img
+              src="../../assets/images/hearth 2.svg"
+              alt=""
+              class="w-3/4 h-3/4 block select-none absolute top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2"
+              draggable="false"
+              *ngIf="isFav"
             />
           </div>
         </div>
@@ -135,17 +140,17 @@
   </div>
 </div>
 <div class="bestsellers pb-5 pt-10 my-10">
-  <slider header="Podobne produkty" theme="dark" />
+  <slider header="  Similar products" theme="dark" />
 </div>
 <div #desc class="w-11/12 m-auto max-w-screen-2xl flex flex-col gap-y-5 mb-8">
-  <h1 class="text-2xl font-medium">O produkcie</h1>
+  <h1 class="text-2xl font-medium">About product</h1>
   <p *ngFor="let paragraph of description">
     {{ paragraph }}
   </p>
-  <div>
+  <div *ngIf="details.length > 0">
     <div class="line my-4"></div>
     <div class="flex">
-      <h1 class="text-2xl font-medium w-48">Szczegóły</h1>
+      <h1 class="text-2xl font-medium w-48">Details</h1>
       <div class="flex flex-col gap-y-1.5">
         <p *ngFor="let paragraph of details">
           {{ paragraph.split(":")[0]

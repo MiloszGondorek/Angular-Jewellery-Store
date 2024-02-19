@@ -25,6 +25,12 @@
       "relation": "oneToMany",
       "target": "api::item.item",
       "mappedBy": "category"
+    },
+    "sizes": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::size.size",
+      "inversedBy": "categories"
     }
   }
 }

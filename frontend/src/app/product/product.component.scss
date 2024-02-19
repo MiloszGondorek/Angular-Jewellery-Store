@@ -58,3 +58,10 @@ form {
 .border {
   border: 1px solid #e3a74d;
 }
+
+.hearth {
+  transition: background-color 1s;
+  img {
+    transition: opacity 1s;
+  }
+}

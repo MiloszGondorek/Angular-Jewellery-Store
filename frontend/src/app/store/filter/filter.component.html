@@ -4,7 +4,12 @@
   <div *ngFor="let element of filter">
     <label class="w-full flex gap-x-1.5" (click)="update(checkbox, element)">
       <div class="checkbox w-5 relative">
-        <input type="checkbox" #checkbox class="opacity-0" />
+        <input
+          type="checkbox"
+          #checkbox
+          class="opacity-0"
+          [checked]="element == startedCollection"
+        />
         <img
           src="../../../assets/images/checkbox.svg"
           alt=""

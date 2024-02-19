@@ -18,6 +18,8 @@ export class StoreComponent implements OnInit {
   metals: string[] = [];
   collections: string[] = [];
 
+  httpCollection: string = '';
+
   selectedMetals: string[] = [];
   selectedCollections: string[] = [];
 
@@ -38,6 +40,7 @@ export class StoreComponent implements OnInit {
 
   ngOnInit() {
     const category = this.route.snapshot.params['category'];
+    const collection = this.route.snapshot.params['collection'];
     if (!this.data.includes(category) && category != 'all') {
       this.router.navigateByUrl('/home');
     }
@@ -46,6 +49,10 @@ export class StoreComponent implements OnInit {
     if (category != 'all') this.getData(id);
     else this.getData();
 
+    if (collection !== undefined) {
+      this.httpCollection = collection;
+      this.addCollection(collection);
+    }
     this.metals = Metal.getMetals();
     this.collections = Collections.getCollections();
   }

@@ -9,17 +9,14 @@ import {
   AfterViewChecked,
 } from '@angular/core';
 import { SliderComponent } from '../reusable/slider/slider.component';
-import { LinkComponent } from './link/link.component';
 import { SelectComponent } from '../reusable/select/select.component';
 import { CountComponent } from './count/count.component';
 import { ButtonComponent } from '../reusable/button/button.component';
-import { StarComponent } from './star/star.component';
 import { CommonModule } from '@angular/common';
 import { http } from '../../httpConnection';
 import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
 import { Storage } from '../../storage';
-import { Item } from '../reusable/item/item.component';
 import { Select } from '../reusable/select/select.component';
 import { BasketItemData } from '../basket/basket.component';
 
@@ -28,11 +25,9 @@ import { BasketItemData } from '../basket/basket.component';
   standalone: true,
   imports: [
     SliderComponent,
-    LinkComponent,
     SelectComponent,
     CountComponent,
     ButtonComponent,
-    StarComponent,
     CommonModule,
   ],
   templateUrl: './product.component.html',
@@ -91,7 +86,9 @@ export class ProductComponent implements OnInit {
   async getData() {
     const request = `items/${this.id}?populate=*`;
     const data: any = await http.getData(request);
+    let catId = 1;
     if (Object.keys(data).length > 0) {
+      catId = data.attributes.category.data.id;
       this.price = data.attributes.Price;
       this.name = data.attributes.Name;
       const des: string = data.attributes.Description;
@@ -107,6 +104,7 @@ export class ProductComponent implements OnInit {
           }
         }
       }
+
       if (des !== null) {
         this.description = des.split('\n');
       }
@@ -115,16 +113,19 @@ export class ProductComponent implements OnInit {
         this.details = det.split('\n');
       }
       this.mainSrc = this.src[0];
-
-      const sizes: any = data.attributes.Size;
-      sizes.forEach((size: any) => {
-        const newSize = new Select(size.Size);
-        this.sizes.push(newSize);
-      });
     } else {
       this.router.navigateByUrl('/404');
     }
     this.isFav = Fav.checkFav();
+
+    const sizeRequest = `sizes?populate=*&filters[categories][id][$eq]=${catId}`;
+    const sizeData: any = await http.getData(sizeRequest);
+    if (Object.keys(sizeData).length > 0) {
+      sizeData.forEach((size: any) => {
+        const newSize = new Select(size.attributes.Size);
+        this.sizes.push(newSize);
+      });
+    }
   }
 
   moveUp() {
@@ -175,10 +176,6 @@ class ImagesList {
   static moveUp() {
     this.currentX++;
     this.move();
-  }
-
-  static test() {
-    console.log(this.childs);
   }
 
   static move() {

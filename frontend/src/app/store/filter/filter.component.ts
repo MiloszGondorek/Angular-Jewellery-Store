@@ -1,10 +1,10 @@
 import {
   Component,
-  ElementRef,
   Input,
   Output,
-  ViewChild,
   EventEmitter,
+  QueryList,
+  ViewChildren,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
@@ -18,11 +18,11 @@ import { CommonModule } from '@angular/common';
 export class FilterComponent {
   @Input() header = '';
   @Input() filter!: any[];
+  @Input() startedCollection: string = '';
 
   @Output() add = new EventEmitter();
   @Output() remove = new EventEmitter();
 
-  @ViewChild('checkbox') checkboxRef!: ElementRef;
   isChecked: boolean = false;
 
   update(checkbox: any, name: string) {

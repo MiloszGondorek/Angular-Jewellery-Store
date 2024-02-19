@@ -28,6 +28,7 @@
     <filter
       header="Kolekcja"
       [filter]="collections"
+      [startedCollection]="httpCollection"
       (add)="addCollection($event)"
       (remove)="removeCollection($event)"
     />

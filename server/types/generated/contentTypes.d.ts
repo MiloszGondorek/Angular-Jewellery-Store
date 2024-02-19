@@ -834,6 +834,11 @@ export interface ApiCategoryCategory extends Schema.CollectionType {
       'oneToMany',
       'api::item.item'
     >;
+    sizes: Attribute.Relation<
+      'api::category.category',
+      'manyToMany',
+      'api::size.size'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -925,7 +930,6 @@ export interface ApiItemItem extends Schema.CollectionType {
       'api::collection.collection'
     >;
     Details: Attribute.Text;
-    Size: Attribute.Component<'reusable.size', true>;
     metal: Attribute.Relation<
       'api::item.item',
       'manyToOne',
@@ -976,6 +980,33 @@ export interface ApiMetalMetal extends Schema.CollectionType {
   };
 }
 
+export interface ApiSizeSize extends Schema.CollectionType {
+  collectionName: 'sizes';
+  info: {
+    singularName: 'size';
+    pluralName: 'sizes';
+    displayName: 'Size';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    Size: Attribute.Integer & Attribute.Required;
+    categories: Attribute.Relation<
+      'api::size.size',
+      'manyToMany',
+      'api::category.category'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<'api::size.size', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<'api::size.size', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+  };
+}
+
 declare module '@strapi/types' {
   export module Shared {
     export interface ContentTypes {
@@ -999,6 +1030,7 @@ declare module '@strapi/types' {
       'api::collection.collection': ApiCollectionCollection;
       'api::item.item': ApiItemItem;
       'api::metal.metal': ApiMetalMetal;
+      'api::size.size': ApiSizeSize;
     }
   }
 }

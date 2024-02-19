@@ -14,6 +14,8 @@ import { Storage } from '../../storage';
 })
 export class BasketComponent implements OnInit {
   items: BasketItem[] = [];
+  price: number = 0;
+  deliverPrice: number = 17;
   ngOnInit(): void {
     this.getData();
   }
@@ -30,9 +32,11 @@ export class BasketComponent implements OnInit {
     const newBasket = this.items.filter((a) => a.id != id);
     this.items = newBasket;
     const basketData: BasketItemData[] = [];
+    this.price = 0;
     newBasket.forEach((item) => {
       const newItem = new BasketItemData(item.sizeId, item.item.getId());
       basketData.push(newItem);
+      this.price += item.item.getPrice();
     });
     const json = JSON.stringify(basketData);
     Storage.setData('basket', json);
@@ -44,16 +48,32 @@ export class BasketComponent implements OnInit {
 
     if (Object.keys(data).length > 0) {
       const price = data.attributes.Price;
+      this.price += price;
+
       const name = data.attributes.Name;
       const serverURL = http.getURL();
       const src = serverURL + data.attributes.MainImage.data.attributes.url;
       const metal = data.attributes.metal.data.attributes.Name;
       const newItem = new Item(name, price, id, src, metal);
-      newItem.setSize(data.attributes.Size[size].Size);
+
+      const catId = data.attributes.category.data.id;
+      const itemSize: any = await this.getSize(catId, size);
+      if (itemSize !== undefined) {
+        newItem.setSize(itemSize);
+      }
 
       const newBasket = new BasketItem(newItem, BasketItem.getIds(), size);
       this.items.push(newBasket);
     }
+  }
+
+  async getSize(catId: number, id: number) {
+    const sizeRequest = `sizes?populate=*&filters[categories][id][$eq]=${catId}`;
+    const sizeData: any = await http.getData(sizeRequest);
+    if (Object.keys(sizeData).length > 0) {
+      return sizeData[id].attributes.Size;
+    }
+    return undefined;
   }
 }
 
