@@ -24,16 +24,15 @@ export class StoreComponent implements OnInit {
   selectedCollections: string[] = [];
 
   header = '';
-  description =
-    'Nasza kolekcja pierścionków oferuje niepowtarzalne wzory, starannie wykonane z myślą o podkreśleniu piękna i indywidualności. Znajdziesz tu zarówno klasyczne diamentowe kompozycje, jak i unikalne kamienie szlachetne, tworzące niezapomniane akcenty, które doskonale wpiszą się w każdą chwilę. ';
+  description!: string;
   src = '../../assets/images/rings-bg.png';
   items: Item[] = [];
   visibleItems: Item[] = [];
   sortData: Select[] = [
-    new Select('Cena (rosnąco)'),
-    new Select('Cena (malejąco)'),
-    new Select('Alfabetycznie (rosnąco)'),
-    new Select('Alfaberycznie (malejąco)'),
+    new Select('Price (up)'),
+    new Select('Price (down)'),
+    new Select('Name (up)'),
+    new Select('Name (down)'),
   ];
 
   constructor(private route: ActivatedRoute, private router: Router) {}
@@ -109,6 +108,11 @@ export class StoreComponent implements OnInit {
       request += `&filters[category][Name][$eq]=${id}`;
     }
     const data = await http.getData(request);
+    if (id) {
+      const categoryReq = `categories?filters[Name][$eq]=${id}`;
+      const category = await http.getData(categoryReq);
+      this.description = category[0].attributes.Description;
+    }
     data.forEach((element: any) => {
       const imgUrl =
         http.getURL() + element.attributes.MainImage.data.attributes.url;
