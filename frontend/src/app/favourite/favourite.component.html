@@ -3,6 +3,12 @@
     Favorites (Quantity: {{ items.length }})
   </h1>
   <div class="h-px w-full bg-black mb-4 mt-2"></div>
+  <div class="text-center" *ngIf="items.length == 0">
+    <h1 class="text-2xl font-medium">
+      You haven't added anything to favourites yet
+    </h1>
+    <a href="/store/all" class="color-[#e3a74d]"><p>See our shop here</p></a>
+  </div>
   <div class="grid grid-cols-1 lg:grid-cols-2 gap-10">
     <item-info
       *ngFor="let item of items"

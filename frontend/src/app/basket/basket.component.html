@@ -11,6 +11,12 @@
         (removeItem)="removeItem(item.id)"
       />
     </div>
+    <div class="text-center" *ngIf="items.length == 0">
+      <h1 class="text-2xl font-medium">
+        You haven't added anything to your cart yet
+      </h1>
+      <a href="/store/all" class="color-[#e3a74d]"><p>See our shop here</p></a>
+    </div>
   </div>
   <div class="w-full lg:max-w-[400px]">
     <div
@@ -34,11 +40,21 @@
         <p>{{ price + deliverPrice }} PLN</p>
       </div>
       <div class="h-px w-full bg-black"></div>
-      <button-border
-        text="Proceed to checkout"
-        [isFull]="true"
-        [fullWidth]="true"
-      />
+      <div (click)="Buy()">
+        <button-border
+          text="Proceed to checkout"
+          [isFull]="true"
+          [fullWidth]="true"
+        />
+      </div>
     </div>
   </div>
+</div>
+
+<div
+  class="w-4/5 max-w-[300px] fixed z-[100] top-5 left-1/2 -translate-x-1/2 bg-[#8f8f8f] shadow-2xl py-4 cursor-pointer"
+  (click)="hideInfo()"
+  *ngIf="showInfo == true"
+>
+  <h1 class="w-fit m-auto text-white">An order has been placed</h1>
 </div>

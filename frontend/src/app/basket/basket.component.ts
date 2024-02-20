@@ -16,6 +16,7 @@ export class BasketComponent implements OnInit {
   items: BasketItem[] = [];
   price: number = 0;
   deliverPrice: number = 17;
+  showInfo = false;
   ngOnInit(): void {
     this.getData();
   }
@@ -40,6 +41,18 @@ export class BasketComponent implements OnInit {
     });
     const json = JSON.stringify(basketData);
     Storage.setData('basket', json);
+  }
+
+  Buy() {
+    if (this.items.length > 0) {
+      this.items = [];
+      this.showInfo = true;
+      this.removeItem(0);
+    }
+  }
+
+  hideInfo() {
+    this.showInfo = false;
   }
 
   async getItemData(id: number, size: number) {

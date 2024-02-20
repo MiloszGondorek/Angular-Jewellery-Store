@@ -45,8 +45,13 @@ export class StoreComponent implements OnInit {
     }
     this.header = category;
     const id = this.route.snapshot.paramMap.get('category');
-    if (category != 'all') this.getData(id);
-    else this.getData();
+    if (category != 'all') {
+      this.getData(id);
+    } else {
+      this.getData();
+      this.description =
+        'Indulge in a stunning collection of jewelry, featuring rings, necklaces, earrings, and bracelets. From timeless rings symbolizing love to elegant necklaces framing the neckline, each piece adds a touch of sophistication. Elevate your style with earrings that sparkle and bracelets that charm, expressing your individuality with every adornment. Discover the perfect piece to complement any outfit and make a statement with our exquisite selection of jewelry.';
+    }
 
     if (collection !== undefined) {
       this.httpCollection = collection;
