@@ -3,7 +3,7 @@
 import { Component, OnInit } from '@angular/core';
 import { LinkComponent } from './link/link.component';
 import { CommonModule } from '@angular/common';
-import { http } from '../../httpConnection';
+import { ServerData, http } from '../../httpConnection';
 
 @Component({
   selector: 'app-collection',
@@ -19,13 +19,26 @@ export class CollectionComponent implements OnInit {
     this.getData();
   }
 
+  // async getData() {
+  //   const data = await http.getData('collections?populate=*');
+  //   data.forEach((element: any, index: any) => {
+  //     const imgUrl =
+  //       http.getURL() + element.attributes.Image.data.attributes.url;
+  //     const title = element.attributes.Title;
+  //     const desc = element.attributes.Description;
+  //     const collection = new Collection(title, desc, imgUrl, index % 2 != 0);
+  //     this.collections.push(collection);
+  //   });
+  // }
+
   async getData() {
-    const data = await http.getData('collections?populate=*');
+    const data: any = ServerData.getCollections();
     data.forEach((element: any, index: any) => {
-      const imgUrl =
-        http.getURL() + element.attributes.Image.data.attributes.url;
-      const title = element.attributes.Title;
-      const desc = element.attributes.Description;
+      console.log(element.name);
+      const imgUrl = http.getURL() + element.src;
+      console.log(imgUrl);
+      const title = element.name;
+      const desc = element.desc;
       const collection = new Collection(title, desc, imgUrl, index % 2 != 0);
       this.collections.push(collection);
     });
