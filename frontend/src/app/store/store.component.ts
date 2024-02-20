@@ -4,7 +4,7 @@ import { FilterComponent } from './filter/filter.component';
 import { Item, ItemComponent } from '../reusable/item/item.component';
 import { CommonModule } from '@angular/common';
 import { SelectComponent, Select } from '../reusable/select/select.component';
-import { http } from '../../httpConnection';
+import { ServerData, http } from '../../httpConnection';
 
 @Component({
   selector: 'app-store',
@@ -106,28 +106,26 @@ export class StoreComponent implements OnInit {
     }
   }
 
-  async getData(id?: any) {
-    let request =
-      'items?populate[0]=MainImage&populate[1]=collection&populate[2]=metal';
+  getData(id?: any) {
+    let data: any = ServerData.getItems();
     if (id) {
-      request += `&filters[category][Name][$eq]=${id}`;
-    }
-    const data = await http.getData(request);
-    if (id) {
-      const categoryReq = `categories?filters[Name][$eq]=${id}`;
-      const category = await http.getData(categoryReq);
-      this.description = category[0].attributes.Description;
+      const catId = ServerData.getCategories().filter((a) => a.name == id)[0]
+        .id;
+      console.log(catId);
+      data = data.filter((a: any) => a.categoryId == catId);
+      console.log(data);
     }
     data.forEach((element: any) => {
-      const imgUrl =
-        http.getURL() + element.attributes.MainImage.data.attributes.url;
-      const title = element.attributes.Name;
-      const price = element.attributes.Price;
+      const imgUrl = http.getURL() + element.src;
+      const title = element.name;
+      const price = element.price;
       const id = element.id;
-      const metal = element.attributes.metal.data.attributes.Name;
+      const metal: any = ServerData.getMetal()[element.metalId].name;
       let newItem: Item;
-      if (element.attributes.collection.data !== null) {
-        const collection = element.attributes.collection.data.attributes.Title;
+
+      if (element.collectionId !== undefined) {
+        const collection =
+          ServerData.getCollections()[element.collectionId].name;
         newItem = new Item(title, price, id, imgUrl, metal, collection);
       } else {
         newItem = new Item(title, price, id, imgUrl, metal);
@@ -191,10 +189,10 @@ class Metal {
     return this.metals;
   }
 
-  static async setMetals() {
-    const data = await http.getData(`metals`);
+  static setMetals() {
+    const data: any[] = ServerData.getMetal();
     data.forEach((element) => {
-      this.metals.push(element.attributes.Name);
+      this.metals.push(element.name);
     });
   }
 }
@@ -207,10 +205,10 @@ class Collections {
     return this.collections;
   }
 
-  static async getData() {
-    const data = await http.getData(`collections`);
+  static getData() {
+    const data: any[] = ServerData.getCollections();
     data.forEach((element) => {
-      this.collections.push(element.attributes.Title);
+      this.collections.push(element.name);
     });
   }
 }

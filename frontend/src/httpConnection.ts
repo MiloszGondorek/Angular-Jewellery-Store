@@ -3,6 +3,7 @@ import axios, { AxiosResponse } from 'axios';
 export class http {
   static apiUrl = 'http://192.168.0.164:1337';
   static async getData(question: string): Promise<any[]> {
+    return [];
     try {
       const response: AxiosResponse = await axios.get(
         this.apiUrl + '/api/' + question
@@ -28,6 +29,29 @@ export class ServerItem {
   collectionId!: number;
   metalId!: number;
   categoryId!: number;
+
+  static allIds = 0;
+  constructor(
+    name: string,
+    price: number,
+    src: string,
+    categoryId: number,
+    metalId: number,
+    collId?: string
+  ) {
+    this.id = ServerItem.allIds;
+    ServerItem.allIds++;
+
+    this.name = name;
+    this.desc = `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed mattis interdum magna, nec elementum sem pulvinar et. Donec nec tempus magna. Donec orci nisi, pretium eu laoreet at, aliquam ut odio. Duis eu metus vitae ligula pulvinar sollicitudin. Nunc hendrerit lacus in purus dictum, ut consectetur felis iaculis. Aenean tincidunt purus mollis lacus maximus, in fringilla odio mattis. Duis interdum orci id velit lacinia, nec blandit nunc euismod. Nullam dolor neque, semper sit amet odio ac, imperdiet accumsan nibh. Duis eu quam ut tellus feugiat porttitor. Maecenas ac nisl nec augue tempus feugiat id ut velit. Etiam risus massa, dictum a tempus ac, dictum vitae lectus. 
+    Mauris in enim purus. Curabitur ut tellus a odio iaculis facilisis. Donec et mi nisi. Morbi id libero nunc. Curabitur magna ligula, varius vel nulla tempor, fringilla mattis ex. Proin sit amet vulputate sapien. Proin magna nibh, rhoncus ut consectetur pharetra, molestie ac sapien. Maecenas egestas, urna eu elementum congue, lacus massa hendrerit ipsum, vel suscipit ex nulla vitae libero. Suspendisse sed sapien at turpis mollis pellentesque in et purus. Aliquam molestie tempor lacus, et pellentesque est tincidunt sed. Nulla facilisis lacus facilisis justo efficitur, eget varius metus consequat. Proin ut dui ut eros rhoncus rhoncus bibendum id erat. Sed eget suscipit purus. Sed at aliquam metus. Nunc at vestibulum urna, non dapibus mi.`;
+
+    this.price = price;
+    this.MainImage = src;
+    this.metalId = metalId;
+    this.categoryId = categoryId;
+    if (collId) this.collectionId = Number.parseInt(collId);
+  }
 }
 
 export class ServerCategory {
@@ -65,6 +89,13 @@ export class ServerCollection {
 export class ServerMetal {
   id!: number;
   name!: string;
+
+  static allIds = 0;
+  constructor(name: string) {
+    this.id = ServerMetal.allIds;
+    ServerMetal.allIds++;
+    this.name = name;
+  }
 }
 
 export class ServerData {
@@ -114,11 +145,43 @@ export class ServerData {
     ),
   ];
 
+  static metals: ServerMetal[] = [
+    new ServerMetal('Gold'),
+    new ServerMetal('Silver'),
+    new ServerMetal('Platinum'),
+  ];
+
+  static items: ServerItem[] = [
+    new ServerItem(
+      'Celestial Sparkle',
+      350,
+      '/uploads/ring_1_main_c0ef2c1679.png',
+      3,
+      1,
+      '1'
+    ),
+    new ServerItem(
+      '2 KATEGORIA',
+      350,
+      '/uploads/ring_1_main_c0ef2c1679.png',
+      1,
+      0,
+      '0'
+    ),
+  ];
+
   static getCollections() {
     return this.collections;
   }
-  static getData() {
-    const json = JSON.stringify(this.collections);
-    console.log(json);
+
+  static getMetal() {
+    return this.metals;
+  }
+  static getCategories() {
+    return this.catergories;
+  }
+
+  static getItems() {
+    return this.items;
   }
 }
