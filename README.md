@@ -19,7 +19,7 @@ The project is a comprehensive website functioning as an online store, providing
   cd frontend <br />
   npm install <br />
   open file src/httpConnection.ts and put your ip in YOUR_IP place. <br />
-  npm run angular serve
+  npm run ng serve
   
 ## Technologies Used
 - Angular
