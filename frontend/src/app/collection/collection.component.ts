@@ -22,9 +22,7 @@ export class CollectionComponent implements OnInit {
   getData() {
     const data: any = ServerData.getCollections();
     data.forEach((element: any, index: any) => {
-      console.log(element.name);
       const imgUrl = http.getURL() + element.src;
-      console.log(imgUrl);
       const title = element.name;
       const desc = element.desc;
       const collection = new Collection(title, desc, imgUrl, index % 2 != 0);
