@@ -6,14 +6,13 @@ import {
   QueryList,
   ViewChildren,
   ViewChild,
-  AfterViewChecked,
 } from '@angular/core';
 import { SliderComponent } from '../reusable/slider/slider.component';
 import { SelectComponent } from '../reusable/select/select.component';
 import { CountComponent } from './count/count.component';
 import { ButtonComponent } from '../reusable/button/button.component';
 import { CommonModule } from '@angular/common';
-import { http } from '../../httpConnection';
+import { ServerData, ServerItem, http } from '../../httpConnection';
 import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
 import { Storage } from '../../storage';
@@ -83,49 +82,28 @@ export class ProductComponent implements OnInit {
     this.canClick = val;
     this.buttonVal = 'Add to basket';
   }
-  async getData() {
-    const request = `items/${this.id}?populate=*`;
-    const data: any = await http.getData(request);
-    let catId = 1;
-    if (Object.keys(data).length > 0) {
-      catId = data.attributes.category.data.id;
-      this.price = data.attributes.Price;
-      this.name = data.attributes.Name;
-      const des: string = data.attributes.Description;
-      const serverURL = http.getURL();
-      this.src.push(serverURL + data.attributes.MainImage.data.attributes.url);
 
-      const images = data.attributes.Images.data;
-      if (images !== null) {
-        for (let url of images) {
-          this.src.push(serverURL + url.attributes.url);
-          if (this.src.length > 3) {
-            this.showArrows = true;
-          }
-        }
-      }
+  getData() {
+    let data: ServerItem = ServerData.getItems().filter(
+      (a) => a.id == this.id
+    )[0];
+    let catId = 1;
+    if (data !== undefined) {
+      catId = data.categoryId;
+      this.price = data.price;
+      this.name = data.name;
+      const des: string = data.desc;
+      const serverURL = http.getURL();
+      this.src.push(serverURL + data.MainImage);
 
       if (des !== null) {
         this.description = des.split('\n');
-      }
-      const det: string = data.attributes.Details;
-      if (det !== null) {
-        this.details = det.split('\n');
       }
       this.mainSrc = this.src[0];
     } else {
       this.router.navigateByUrl('/404');
     }
     this.isFav = Fav.checkFav();
-
-    const sizeRequest = `sizes?populate=*&filters[categories][id][$eq]=${catId}`;
-    const sizeData: any = await http.getData(sizeRequest);
-    if (Object.keys(sizeData).length > 0) {
-      sizeData.forEach((size: any) => {
-        const newSize = new Select(size.attributes.Size);
-        this.sizes.push(newSize);
-      });
-    }
   }
 
   moveUp() {

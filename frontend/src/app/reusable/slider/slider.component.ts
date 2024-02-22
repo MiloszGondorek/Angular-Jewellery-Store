@@ -10,10 +10,14 @@ import {
   OnInit,
 } from '@angular/core';
 
-import { http } from '../../../httpConnection';
+import {
+  ServerCollection,
+  ServerData,
+  ServerItem,
+} from '../../../httpConnection';
 import { CommonModule } from '@angular/common';
 import { Item, ItemComponent } from '../item/item.component';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'slider',
@@ -27,11 +31,7 @@ export class SliderComponent implements OnInit, AfterViewChecked {
   @Input() theme = 'light';
   @Input() bestsellers = false;
 
-  constructor(
-    private cdr: ChangeDetectorRef,
-    private route: ActivatedRoute,
-    private router: Router
-  ) {}
+  constructor(private cdr: ChangeDetectorRef, private route: ActivatedRoute) {}
   @ViewChildren('child') childs!: QueryList<ElementRef>;
 
   topPx: number | undefined;
@@ -52,38 +52,34 @@ export class SliderComponent implements OnInit, AfterViewChecked {
     this.setButtonMt();
   }
 
-  async getItem(itemId: any) {
-    const data: any = await http.getData(`items/${itemId}?populate=*`);
-    const imgUrl =
-      http.getURL() + data.attributes.MainImage.data.attributes.url;
-    const title = data.attributes.Name;
-    const price = data.attributes.Price;
+  getItem(itemId: any) {
+    const data: ServerItem = ServerData.getItems(itemId)[0];
+    console.log(data);
+    const imgUrl = data.MainImage;
+    const title = data.name;
+    const price = data.price;
     const id = data.id;
     const newItem = new Item(title, price, id, imgUrl);
     this.items.push(newItem);
     this.checkRowCount();
   }
 
-  async generateBestsellers() {
-    const data: any = await http.getData(`bestseller?populate=*`);
-
-    data.attributes.items.data.forEach((element: any) => {
-      const item = element.id;
-      this.getItem(item);
+  generateBestsellers() {
+    const data: number[] = ServerData.getBestsellers();
+    data.forEach((id: any) => {
+      this.getItem(id);
     });
   }
 
-  async generateRelative(id: any) {
-    const data: any = await http.getData(`items/${id}?populate=*`);
-    const collection = data.attributes.collection.data;
-
+  generateRelative(id: any) {
+    const data: ServerItem = ServerData.getItems(id)[0];
     let itemsInList = 0;
     let itemsIds: any = [];
     const itemLimit = 10;
 
-    if (collection !== null) {
-      const itemInCollection: any = await http.getData(
-        `items?populate=*&filters[collection][id]=${collection.id}&filters[id][$ne]=${id}`
+    if (data.collectionId !== null) {
+      const itemInCollection: ServerItem[] = ServerData.getItems().filter(
+        (a) => a.collectionId == data.collectionId && a.id != data.id
       );
       itemInCollection.forEach((element: any) => {
         const itemId = element.id;
@@ -93,9 +89,9 @@ export class SliderComponent implements OnInit, AfterViewChecked {
       });
     }
     if (itemsInList < itemLimit) {
-      const category = data.attributes.category.data;
-      const itemsInCategory: any = await http.getData(
-        `items?populate=*&filters[category][id]=${category.id}&filters[id][$ne]=${id}`
+      const category = data.categoryId;
+      const itemsInCategory: ServerItem[] = ServerData.getItems().filter(
+        (a) => a.categoryId == category && a.id != id
       );
       for (let item of itemsInCategory) {
         const itemId = item.id;
@@ -131,10 +127,12 @@ export class SliderComponent implements OnInit, AfterViewChecked {
 
   move() {
     this.checkPositions();
-    this.childs.forEach((child) => {
-      const element = child.nativeElement as HTMLElement;
-      element.style.transform = `translateX(calc((100% + 1.25rem) * ${this.currentX} ))`;
-    });
+    if (this.childs !== undefined) {
+      this.childs.forEach((child) => {
+        const element = child.nativeElement as HTMLElement;
+        element.style.transform = `translateX(calc((100% + 1.25rem) * ${this.currentX} ))`;
+      });
+    }
   }
 
   @HostListener('window:resize', ['$event'])
@@ -144,16 +142,17 @@ export class SliderComponent implements OnInit, AfterViewChecked {
   }
 
   checkRowCount() {
-    if (window.innerWidth >= 1024) {
-      this.elementsInRow = 5;
-    } else if (window.innerWidth >= 640) {
-      this.elementsInRow = 4;
-    } else {
-      this.elementsInRow = 2;
+    if (window !== undefined) {
+      if (window.innerWidth >= 1024) {
+        this.elementsInRow = 5;
+      } else if (window.innerWidth >= 640) {
+        this.elementsInRow = 4;
+      } else {
+        this.elementsInRow = 2;
+      }
+
+      this.showArrows = this.items.length > this.elementsInRow;
     }
-
-    this.showArrows = this.items.length > this.elementsInRow;
-
     this.checkPositions();
     this.move();
   }

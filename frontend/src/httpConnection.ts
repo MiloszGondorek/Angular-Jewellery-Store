@@ -1,7 +1,6 @@
 import axios, { AxiosResponse } from 'axios';
-
 export class http {
-  static apiUrl = 'http://192.168.0.164:1337';
+  static apiUrl = 'http://localhost:4200';
   static async getData(question: string): Promise<any[]> {
     return [];
     try {
@@ -155,7 +154,7 @@ export class ServerData {
     new ServerItem(
       'Celestial Sparkle',
       350,
-      '/uploads/ring_1_main_c0ef2c1679.png',
+      '/assets/uploads/rings/ring 1 main.png',
       3,
       1,
       '1'
@@ -163,12 +162,14 @@ export class ServerData {
     new ServerItem(
       '2 KATEGORIA',
       350,
-      '/uploads/ring_1_main_c0ef2c1679.png',
-      1,
+      '/assets/uploads/rings/ring 2 main.png',
+      3,
       0,
       '0'
     ),
   ];
+
+  static BestsellersIds: number[] = [0, 1];
 
   static getCollections() {
     return this.collections;
@@ -181,7 +182,14 @@ export class ServerData {
     return this.catergories;
   }
 
-  static getItems() {
+  static getItems(id?: string) {
+    if (id) {
+      return this.items.filter((a) => a.id.toString() == id);
+    }
     return this.items;
+  }
+
+  static getBestsellers() {
+    return this.BestsellersIds;
   }
 }
