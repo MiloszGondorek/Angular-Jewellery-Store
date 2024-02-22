@@ -26,3 +26,6 @@ The project is a comprehensive website functioning as an online store, providing
 - Strapi
 - Tailwind
 - TypeScript
+
+## Link to hosted project:
+https://vivida.vercel.app
