@@ -8,6 +8,7 @@ import { AboutComponent } from './about/about.component';
 import { CollectionComponent } from './collection/collection.component';
 import { BasketComponent } from './basket/basket.component';
 import { FavouriteComponent } from './favourite/favourite.component';
+import { IconsComponent } from './icons/icons.component';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -21,5 +22,6 @@ export const routes: Routes = [
   { path: 'collections', component: CollectionComponent },
   { path: 'basket', component: BasketComponent },
   { path: 'favourite', component: FavouriteComponent },
+  { path: 'icons', component: IconsComponent },
   { path: '**', component: Page404Component },
 ];
