@@ -303,15 +303,6 @@ export class ServerData {
       ['/assets/uploads/all/bracelets/bracelet 3.jpg']
     ),
     new ServerItem(
-      'Moonlit Sonata',
-      320,
-      '/assets/uploads/bracelets/bracelet 4.png',
-      0,
-      1,
-      '3',
-      ['/assets/uploads/all/bracelets/bracelet 4.jpg']
-    ),
-    new ServerItem(
       'Enchanting Charm',
       250,
       '/assets/uploads/bracelets/bracelet 5.png',
@@ -412,7 +403,7 @@ export class ServerData {
     ),
   ];
 
-  static BestsellersIds: number[] = [0, 1];
+  static BestsellersIds: number[] = [0, 1, 11, 5, 8, 23, 13, 9, 20, 16];
 
   static getCollections() {
     return this.collections;
