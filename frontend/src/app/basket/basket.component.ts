@@ -3,7 +3,7 @@ import { ItemInfoComponent } from '../reusable/item-info/item-info.component';
 import { Item } from '../reusable/item/item.component';
 import { CommonModule } from '@angular/common';
 import { ButtonComponent } from '../reusable/button/button.component';
-import { http } from '../../httpConnection';
+import { ServerData, ServerItem, http } from '../../httpConnection';
 import { Storage } from '../../storage';
 @Component({
   selector: 'app-basket',
@@ -56,21 +56,20 @@ export class BasketComponent implements OnInit {
   }
 
   async getItemData(id: number, size: number) {
-    const request = `items/${id}?populate=*`;
-    const data: any = await http.getData(request);
+    const data: ServerItem = ServerData.getItems(id.toString())[0];
 
     if (Object.keys(data).length > 0) {
-      const price = data.attributes.Price;
+      const price = data.price;
       this.price += price;
 
-      const name = data.attributes.Name;
+      const name = data.name;
       const serverURL = http.getURL();
-      const src = serverURL + data.attributes.MainImage.data.attributes.url;
-      const metal = data.attributes.metal.data.attributes.Name;
+      const src = serverURL + data.MainImage;
+      const metal = ServerData.getMetal()[data.metalId].name;
       const newItem = new Item(name, price, id, src, metal);
 
-      const catId = data.attributes.category.data.id;
-      const itemSize: any = await this.getSize(catId, size);
+      const catId = data.categoryId;
+      const itemSize: any = this.getSize(catId, size);
       if (itemSize !== undefined) {
         newItem.setSize(itemSize);
       }
@@ -80,11 +79,10 @@ export class BasketComponent implements OnInit {
     }
   }
 
-  async getSize(catId: number, id: number) {
-    const sizeRequest = `sizes?populate=*&filters[categories][id][$eq]=${catId}`;
-    const sizeData: any = await http.getData(sizeRequest);
-    if (Object.keys(sizeData).length > 0) {
-      return sizeData[id].attributes.Size;
+  getSize(catId: number, id: number) {
+    const sizeRequest = ServerData.getCategories()[catId].sizes;
+    if (sizeRequest !== undefined) {
+      return sizeRequest[id];
     }
     return undefined;
   }

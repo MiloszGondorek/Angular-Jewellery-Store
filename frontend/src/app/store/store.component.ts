@@ -4,7 +4,7 @@ import { FilterComponent } from './filter/filter.component';
 import { Item, ItemComponent } from '../reusable/item/item.component';
 import { CommonModule } from '@angular/common';
 import { SelectComponent, Select } from '../reusable/select/select.component';
-import { ServerData, http } from '../../httpConnection';
+import { ServerData, ServerItem, http } from '../../httpConnection';
 
 @Component({
   selector: 'app-store',
@@ -111,12 +111,10 @@ export class StoreComponent implements OnInit {
     if (id) {
       const catId = ServerData.getCategories().filter((a) => a.name == id)[0]
         .id;
-      console.log(catId);
       data = data.filter((a: any) => a.categoryId == catId);
-      console.log(data);
     }
-    data.forEach((element: any) => {
-      const imgUrl = http.getURL() + element.src;
+    data.forEach((element: ServerItem) => {
+      const imgUrl = http.getURL() + element.MainImage;
       const title = element.name;
       const price = element.price;
       const id = element.id;

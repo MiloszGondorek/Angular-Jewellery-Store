@@ -3,7 +3,7 @@ import { ItemInfoComponent } from '../reusable/item-info/item-info.component';
 import { Item } from '../reusable/item/item.component';
 import { CommonModule } from '@angular/common';
 import { Storage } from '../../storage';
-import { http } from '../../httpConnection';
+import { ServerData, ServerItem, http } from '../../httpConnection';
 
 @Component({
   selector: 'app-favourite',
@@ -36,16 +36,15 @@ export class FavouriteComponent {
     Storage.setData('fav', json);
   }
 
-  async getItemData(id: number) {
-    const request = `items/${id}?populate=*`;
-    const data: any = await http.getData(request);
+  getItemData(id: number) {
+    const data: ServerItem = ServerData.getItems(id.toString())[0];
 
-    if (Object.keys(data).length > 0) {
-      const price = data.attributes.Price;
-      const name = data.attributes.Name;
+    if (data !== undefined) {
+      const price = data.price;
+      const name = data.name;
       const serverURL = http.getURL();
-      const src = serverURL + data.attributes.MainImage.data.attributes.url;
-      const metal = data.attributes.metal.data.attributes.Name;
+      const src = serverURL + data.MainImage;
+      const metal = ServerData.getMetal()[data.metalId].name;
       const newItem = new Item(name, price, id, src, metal);
       this.items.push(newItem);
     }
