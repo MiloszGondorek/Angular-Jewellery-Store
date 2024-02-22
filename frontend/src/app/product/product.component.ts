@@ -99,11 +99,28 @@ export class ProductComponent implements OnInit {
       if (des !== null) {
         this.description = des.split('\n');
       }
+
+      const images = data.allImages;
+      if (images !== undefined) {
+        images.forEach((s) => {
+          this.src.push(s);
+        });
+      }
+
       this.mainSrc = this.src[0];
     } else {
       this.router.navigateByUrl('/404');
     }
     this.isFav = Fav.checkFav();
+
+    const sizeData = ServerData.getCategories()[catId].sizes;
+    console.log(sizeData);
+    if (sizeData !== undefined) {
+      sizeData.forEach((size: any) => {
+        const newSize = new Select(size);
+        this.sizes.push(newSize);
+      });
+    }
   }
 
   moveUp() {

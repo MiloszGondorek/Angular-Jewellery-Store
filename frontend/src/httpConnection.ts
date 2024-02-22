@@ -28,6 +28,7 @@ export class ServerItem {
   collectionId!: number;
   metalId!: number;
   categoryId!: number;
+  allImages!: string[];
 
   static allIds = 0;
   constructor(
@@ -36,7 +37,8 @@ export class ServerItem {
     src: string,
     categoryId: number,
     metalId: number,
-    collId?: string
+    collId?: string,
+    allImages?: string[]
   ) {
     this.id = ServerItem.allIds;
     ServerItem.allIds++;
@@ -49,7 +51,12 @@ export class ServerItem {
     this.MainImage = src;
     this.metalId = metalId;
     this.categoryId = categoryId;
-    if (collId) this.collectionId = Number.parseInt(collId);
+    if (collId) {
+      this.collectionId = Number.parseInt(collId);
+    }
+    if (allImages) {
+      this.allImages = allImages;
+    }
   }
 }
 
@@ -157,13 +164,20 @@ export class ServerData {
       '/assets/uploads/rings/ring 1 main.png',
       3,
       1,
-      '1'
+      '1',
+      [
+        '/assets/uploads/rings/ring 2 main.png',
+        '/assets/uploads/rings/ring 3 main.png',
+        '/assets/uploads/rings/ring 4 main.png',
+        '/assets/uploads/rings/ring 5 main.png',
+        '/assets/uploads/rings/ring 6 main.png',
+      ]
     ),
     new ServerItem(
       '2 KATEGORIA',
       350,
       '/assets/uploads/rings/ring 2 main.png',
-      3,
+      1,
       0,
       '0'
     ),

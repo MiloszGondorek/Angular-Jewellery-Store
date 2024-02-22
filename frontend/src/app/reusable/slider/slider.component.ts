@@ -54,7 +54,6 @@ export class SliderComponent implements OnInit, AfterViewChecked {
 
   getItem(itemId: any) {
     const data: ServerItem = ServerData.getItems(itemId)[0];
-    console.log(data);
     const imgUrl = data.MainImage;
     const title = data.name;
     const price = data.price;
