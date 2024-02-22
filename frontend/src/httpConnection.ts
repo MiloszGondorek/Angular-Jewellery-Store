@@ -1,6 +1,6 @@
 import axios, { AxiosResponse } from 'axios';
 export class http {
-  static apiUrl = 'http://localhost:4200';
+  static apiUrl = 'https://vivida.vercel.app';
   static async getData(question: string): Promise<any[]> {
     return [];
     try {
