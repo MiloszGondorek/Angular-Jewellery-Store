@@ -7,7 +7,9 @@
       class="l_arrow"
       src="../../../assets/images/arrow-left.svg"
       class="arrow absolute left-0"
-      [ngStyle]="{ 'top.px': topPx }"
+      [ngStyle]="{
+        'top.px': element != null ? element.nativeElement.offsetHeight / 2 : 100
+      }"
       (click)="moveRight()"
       *ngIf="showArrows"
     />

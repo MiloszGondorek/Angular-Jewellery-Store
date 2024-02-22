@@ -10,11 +10,7 @@ import {
   OnInit,
 } from '@angular/core';
 
-import {
-  ServerCollection,
-  ServerData,
-  ServerItem,
-} from '../../../httpConnection';
+import { ServerData, ServerItem } from '../../../httpConnection';
 import { CommonModule } from '@angular/common';
 import { Item, ItemComponent } from '../item/item.component';
 import { ActivatedRoute } from '@angular/router';
@@ -61,6 +57,7 @@ export class SliderComponent implements OnInit, AfterViewChecked {
     const newItem = new Item(title, price, id, imgUrl);
     this.items.push(newItem);
     this.checkRowCount();
+    this.setButtonMt();
   }
 
   generateBestsellers() {
@@ -159,6 +156,7 @@ export class SliderComponent implements OnInit, AfterViewChecked {
   element: any;
   setElement(element: any) {
     this.element = element;
+    this.setButtonMt();
   }
 
   setButtonMt() {

@@ -19,19 +19,7 @@ export class CollectionComponent implements OnInit {
     this.getData();
   }
 
-  // async getData() {
-  //   const data = await http.getData('collections?populate=*');
-  //   data.forEach((element: any, index: any) => {
-  //     const imgUrl =
-  //       http.getURL() + element.attributes.Image.data.attributes.url;
-  //     const title = element.attributes.Title;
-  //     const desc = element.attributes.Description;
-  //     const collection = new Collection(title, desc, imgUrl, index % 2 != 0);
-  //     this.collections.push(collection);
-  //   });
-  // }
-
-  async getData() {
+  getData() {
     const data: any = ServerData.getCollections();
     data.forEach((element: any, index: any) => {
       console.log(element.name);

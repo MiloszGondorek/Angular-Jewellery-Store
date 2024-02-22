@@ -26,6 +26,10 @@ export class ItemComponent implements AfterViewInit {
   @Output() childCreated: EventEmitter<any> = new EventEmitter<any>();
 
   ngAfterViewInit() {
+    this.EmitEvent();
+  }
+
+  EmitEvent(){
     this.childCreated.emit(this.itemElement);
   }
 }

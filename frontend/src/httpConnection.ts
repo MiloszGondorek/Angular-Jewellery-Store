@@ -132,22 +132,22 @@ export class ServerData {
     new ServerCollection(
       'Ethereal Enchantment',
       'Ethereal Enchantment captures the essence of celestial beauty, intertwining delicate motifs inspired by the cosmos with the brilliance of gemstones. Each piece in this collection exudes an otherworldly charm, as if plucked from the stars themselves. Adorn yourself with these celestial treasures and become a beacon of ethereal allure wherever you go.',
-      '/uploads/collection_1_fb356bf450.png'
+      '/uploads/collections/collection 1.png'
     ),
     new ServerCollection(
       'Oasis',
       'Oasis invites you to immerse yourself in the opulence of desert landscapes, where shimmering sands meet radiant sunsets. This collection celebrates the warmth and splendor of gold, accented by intricate designs reminiscent of ancient civilizations. With each piece, experience the timeless allure of luxury and embark on a journey to your own personal oasis of elegance.',
-      '/uploads/collection_1_fb356bf450.png'
+      '/uploads/collections/collection 2.png'
     ),
     new ServerCollection(
       'Oceanic Serenade',
       `Dive into the depths of beauty with Oceanic Serenade, a collection that echoes the mesmerizing allure of the sea. Inspired by the rhythmic dance of waves and the enchanting hues of marine life, each piece is crafted to evoke a sense of tranquility and grace. Let the ocean's melody serenade you as you adorn yourself with these exquisite treasures, reminiscent of the mysteries that lie beneath the surface.`,
-      '/uploads/collection_1_fb356bf450.png'
+      '/uploads/collections/collection 3.png'
     ),
     new ServerCollection(
       'Whispering Woods',
       'Step into an enchanted realm with Whispering Woods, where the magic of nature intertwines with the elegance of jewelry. Inspired by the lush foliage and timeless mystique of ancient forests, this collection features intricate leafy motifs and earthy tones. Embrace the whispers of the woods as you wear these pieces, connecting with the serenity and natural beauty that surrounds us.   ',
-      '/uploads/collection_1_fb356bf450.png'
+      '/uploads/collections/collection 4.png'
     ),
   ];
 
