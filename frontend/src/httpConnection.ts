@@ -159,27 +159,256 @@ export class ServerData {
 
   static items: ServerItem[] = [
     new ServerItem(
+      'Moonlit Serenade',
+      550,
+      '/assets/uploads/necklaces/necklace 1.png',
+      2,
+      0,
+      '0',
+      ['/assets/uploads/all/necklaces/necklace 1.jpg']
+    ),
+    new ServerItem(
+      'Enchanted Garden',
+      480,
+      '/assets/uploads/necklaces/necklace 2.png',
+      2,
+      2,
+      '1',
+      ['/assets/uploads/all/necklaces/necklace 2.jpg']
+    ),
+    new ServerItem(
+      'Celestial Harmony',
+      620,
+      '/assets/uploads/necklaces/necklace 3.png',
+      2,
+      1,
+      '2',
+      ['/assets/uploads/all/necklaces/necklace 3.jpg']
+    ),
+    new ServerItem(
+      'Ocean Whisper',
+      420,
+      '/assets/uploads/necklaces/necklace 4.png',
+      2,
+      0,
+      '3',
+      ['/assets/uploads/all/necklaces/necklace 4.jpg']
+    ),
+    new ServerItem(
+      'Golden Radiance',
+      720,
+      '/assets/uploads/necklaces/necklace 5.png',
+      2,
+      2,
+      '',
+      ['/assets/uploads/all/necklaces/necklace 5.jpg']
+    ),
+    new ServerItem(
+      'Whispering Winds',
+      390,
+      '/assets/uploads/necklaces/necklace 6.png',
+      2,
+      0,
+      '0',
+      ['/assets/uploads/all/necklaces/necklace 6.jpg']
+    ),
+    new ServerItem(
+      'Vintage Lace',
+      250,
+      '/assets/uploads/necklaces/necklace 7.png',
+      2,
+      1,
+      '1',
+      ['/assets/uploads/all/necklaces/necklace 7.jpg']
+    ),
+    new ServerItem(
+      'Aurora Borealis',
+      580,
+      '/assets/uploads/necklaces/necklace 8.png',
+      2,
+      2,
+      '2',
+      ['/assets/uploads/all/necklaces/necklace 8.jpg']
+    ),
+    new ServerItem(
+      'Twilight Teardrop',
+      180,
+      '/assets/uploads/earrings/earring 1.png',
+      1,
+      0,
+      '0',
+      ['/assets/uploads/all/earrings/earring 1.jpg']
+    ),
+    new ServerItem(
+      'Serene Sunburst',
+      220,
+      '/assets/uploads/earrings/earring 2.png',
+      1,
+      1,
+      '1',
+      ['/assets/uploads/all/earrings/earring 2.jpg']
+    ),
+    new ServerItem(
+      'Enchanted Forest',
+      250,
+      '/assets/uploads/earrings/earring 3.png',
+      1,
+      0,
+      '2',
+      ['/assets/uploads/all/earrings/earring 3.jpg']
+    ),
+    new ServerItem(
+      'Oceanic Opulence',
+      290,
+      '/assets/uploads/earrings/earring 4.png',
+      1,
+      2,
+      '3',
+      ['/assets/uploads/all/earrings/earring 4.jpg']
+    ),
+    new ServerItem(
+      'Golden Gleam',
+      200,
+      '/assets/uploads/earrings/earring 5.png',
+      1,
+      0,
+      '',
+      ['/assets/uploads/all/earrings/earring 5.jpg']
+    ),
+    new ServerItem(
+      'Starlight Sparkle',
+      280,
+      '/assets/uploads/bracelets/bracelet 1.png',
+      0,
+      2,
+      '0',
+      ['/assets/uploads/all/bracelets/bracelet 1.jpg']
+    ),
+    new ServerItem(
+      'Tranquil Waves',
+      360,
+      '/assets/uploads/bracelets/bracelet 2.png',
+      0,
+      2,
+      '1',
+      ['/assets/uploads/all/bracelets/bracelet 2.jpg']
+    ),
+    new ServerItem(
+      'Gilded Garden',
+      420,
+      '/assets/uploads/bracelets/bracelet 3.png',
+      0,
+      2,
+      '2',
+      ['/assets/uploads/all/bracelets/bracelet 3.jpg']
+    ),
+    new ServerItem(
+      'Moonlit Sonata',
+      320,
+      '/assets/uploads/bracelets/bracelet 4.png',
+      0,
+      1,
+      '3',
+      ['/assets/uploads/all/bracelets/bracelet 4.jpg']
+    ),
+    new ServerItem(
+      'Enchanting Charm',
+      250,
+      '/assets/uploads/bracelets/bracelet 5.png',
+      0,
+      0,
+      '',
+      ['/assets/uploads/all/bracelets/bracelet 5.jpg']
+    ),
+    new ServerItem(
+      'Silver Elegance',
+      480,
+      '/assets/uploads/bracelets/bracelet 6.png',
+      0,
+      2,
+      '1',
+      ['/assets/uploads/all/bracelets/bracelet 6.jpg']
+    ),
+    new ServerItem(
       'Celestial Sparkle',
       350,
       '/assets/uploads/rings/ring 1 main.png',
       3,
       1,
-      '1',
-      [
-        '/assets/uploads/rings/ring 2 main.png',
-        '/assets/uploads/rings/ring 3 main.png',
-        '/assets/uploads/rings/ring 4 main.png',
-        '/assets/uploads/rings/ring 5 main.png',
-        '/assets/uploads/rings/ring 6 main.png',
-      ]
+      '0',
+      ['/assets/uploads/all/rings/ring 1.jpg']
     ),
     new ServerItem(
-      '2 KATEGORIA',
-      350,
+      'Serenity Solitaire',
+      450,
       '/assets/uploads/rings/ring 2 main.png',
-      1,
+      3,
       0,
-      '0'
+      '1',
+      ['/assets/uploads/all/rings/ring 2.jpg']
+    ),
+    new ServerItem(
+      'Midnight Moonstone',
+      280,
+      '/assets/uploads/rings/ring 3 main.png',
+      3,
+      0,
+      '2',
+      ['/assets/uploads/all/rings/ring 3.jpg']
+    ),
+    new ServerItem(
+      'Enchanted Forest Band',
+      600,
+      '/assets/uploads/rings/ring 4 main.png',
+      3,
+      2,
+      '3',
+      ['/assets/uploads/all/rings/ring 4.jpg']
+    ),
+    new ServerItem(
+      'Oceanic Elegance',
+      380,
+      '/assets/uploads/rings/ring 5 main.png',
+      3,
+      2,
+      '',
+      ['/assets/uploads/all/rings/ring 5.jpg']
+    ),
+    new ServerItem(
+      'Whispers of Romance',
+      320,
+      '/assets/uploads/rings/ring 6 main.png',
+      3,
+      0,
+      '0',
+      ['/assets/uploads/all/rings/ring 6.jpg']
+    ),
+    new ServerItem(
+      'Golden Sunburst',
+      550,
+      '/assets/uploads/rings/ring 7 main.png',
+      3,
+      2,
+      '1',
+      ['/assets/uploads/all/rings/ring 7.jpg']
+    ),
+    new ServerItem(
+      'Ethereal Halo',
+      420,
+      '/assets/uploads/rings/ring 8 main.png',
+      3,
+      1,
+      '2',
+      ['/assets/uploads/all/rings/ring 8.jpg']
+    ),
+    new ServerItem(
+      'Vintage Blossom',
+      370,
+      '/assets/uploads/rings/ring 9 main.png',
+      3,
+      1,
+      '3',
+      ['/assets/uploads/all/rings/ring 9.jpg']
     ),
   ];
 

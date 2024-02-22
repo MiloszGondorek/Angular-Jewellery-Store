@@ -112,6 +112,7 @@ export class StoreComponent implements OnInit {
       const catId = ServerData.getCategories().filter((a) => a.name == id)[0]
         .id;
       data = data.filter((a: any) => a.categoryId == catId);
+      this.description = ServerData.getCategories()[catId].desc;
     }
     data.forEach((element: ServerItem) => {
       const imgUrl = http.getURL() + element.MainImage;

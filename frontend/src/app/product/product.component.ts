@@ -105,7 +105,10 @@ export class ProductComponent implements OnInit {
         images.forEach((s) => {
           this.src.push(s);
         });
-        ImagesList.setChildrens(this.childs);
+
+        if (images.length > 2) {
+          this.showArrows = true;
+        }
       }
 
       this.mainSrc = this.src[0];
@@ -120,9 +123,6 @@ export class ProductComponent implements OnInit {
         const newSize = new Select(size);
         this.sizes.push(newSize);
       });
-      if (sizeData.length > 2) {
-        this.showArrows = true;
-      }
     }
   }
 
