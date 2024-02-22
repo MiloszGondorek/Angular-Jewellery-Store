@@ -105,6 +105,7 @@ export class ProductComponent implements OnInit {
         images.forEach((s) => {
           this.src.push(s);
         });
+        ImagesList.setChildrens(this.childs);
       }
 
       this.mainSrc = this.src[0];
@@ -114,12 +115,14 @@ export class ProductComponent implements OnInit {
     this.isFav = Fav.checkFav();
 
     const sizeData = ServerData.getCategories()[catId].sizes;
-    console.log(sizeData);
     if (sizeData !== undefined) {
       sizeData.forEach((size: any) => {
         const newSize = new Select(size);
         this.sizes.push(newSize);
       });
+      if (sizeData.length > 2) {
+        this.showArrows = true;
+      }
     }
   }
 
@@ -148,7 +151,6 @@ export class ProductComponent implements OnInit {
 }
 
 class ImagesList {
-  static showArrows = false;
   static currentX = 0;
   static elementsInRow = 3;
   static orientationHorizontal = false;
